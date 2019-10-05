@@ -4,7 +4,20 @@ require(`dotenv`).config({
 
 module.exports = {
   siteMetadata: {
-    siteTitleAlt: `Cara - Gatsby Starter Portfolio`,
+    // Used for the title template on pages other than the index site
+    siteTitle: `Cale Corwin's Portfolio`,
+    // Default title of the page
+    siteTitleAlt: `Cale's Portfolio`,
+    // Can be used for e.g. JSONLD
+    siteHeadline: `Cale's Portfolio`,
+    // Will be used to generate absolute URLs for og:image etc.
+    siteUrl: `https://cale.xyz`,
+    // Used for SEO
+    siteDescription: `Cale Corwin's development portfolio, powered by Gatsby`,
+    // Will be set on the <html /> tag
+    siteLanguage: `en`,
+    // Used for og:image and must be placed inside the `static` folder
+    siteImage: `/banner.jpg`
   },
   plugins: [
     {
