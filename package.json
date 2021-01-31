@@ -2,8 +2,8 @@
   "private": true,
   "name": "cara",
   "description": "Cale Corwin's Professional Portfolio",
-  "version": "0.0.9",
-  "author": "Cale + LekoArts <hello@lekoarts.de>",
+  "version": "0.1.0",
+  "author": "Cale + LekoArts",
   "license": "MIT",
   "starter-name": "gatsby-starter-portfolio-cara",
   "scripts": {
