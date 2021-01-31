@@ -13,7 +13,7 @@ module.exports = {
     // Will be used to generate absolute URLs for og:image etc.
     siteUrl: `https://cale.xyz`,
     // Used for SEO
-    siteDescription: `Cale Corwin's development portfolio, powered by Gatsby`,
+    siteDescription: `Cale Corwin's development portfolio`,
     // Will be set on the <html /> tag
     siteLanguage: `en`,
     // Used for og:image and must be placed inside the `static` folder
