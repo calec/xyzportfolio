@@ -1,8 +1,8 @@
-# My Portfolio
-## Stack:
+# My One Page Portfolio
+## Stack
 * Github 
 * Gatsby(*React*)
 * Markdown
 * Netlify
-## Theme:
+## Theme
 [LekoArt's Cara](https://cara.lekoarts.de)
