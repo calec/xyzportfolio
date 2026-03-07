@@ -8,6 +8,7 @@ import AboutWindow from "./about-window"
 import ProjectsWindow from "./projects-window"
 import SkillsWindow from "./skills-window"
 import ContactWindow from "./contact-window"
+import Terminal from "./terminal"
 
 type WindowState = {
   id: string
@@ -132,6 +133,10 @@ const Desktop = () => {
     dispatch({ type: "TOGGLE", id })
   }, [])
 
+  const handleOpenWindow = useCallback((id: string) => {
+    dispatch({ type: "OPEN", id })
+  }, [])
+
   const taskbarWindows = windows.map((w) => ({
     id: w.id,
     title: WINDOW_META[w.id]?.title ?? w.id,
@@ -239,6 +244,21 @@ const Desktop = () => {
               onClose={() => handleWindowClose("mail")}
               onMinimize={() => handleWindowMinimize("mail")}
               zIndex={mail.zIndex}
+            />
+          </div>
+        )
+      })()}
+
+      {(() => {
+        const terminal = getWin("terminal")
+        return (
+          <div onMouseDown={() => handleWindowFocus("terminal")}>
+            <Terminal
+              isOpen={terminal.isOpen && !terminal.isMinimized}
+              onClose={() => handleWindowClose("terminal")}
+              onMinimize={() => handleWindowMinimize("terminal")}
+              zIndex={terminal.zIndex}
+              onOpenWindow={handleOpenWindow}
             />
           </div>
         )
