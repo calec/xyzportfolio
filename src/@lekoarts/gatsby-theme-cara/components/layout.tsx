@@ -45,8 +45,8 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
           box-shadow: 0 0 6px rgba(51, 255, 51, 0.4);
         }
       `}</style>
+      <Desktop />
       {!booted && <BootSequence onComplete={() => setBooted(true)} />}
-      {booted && <Desktop />}
     </>
   )
 }
