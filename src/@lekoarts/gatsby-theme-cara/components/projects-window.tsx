@@ -8,6 +8,7 @@ interface ProjectsWindowProps {
   onClose: () => void
   onMinimize?: () => void
   zIndex?: number
+  soundEnabled?: boolean
 }
 
 interface Project {
@@ -50,7 +51,7 @@ const projects: Project[] = [
   },
 ]
 
-const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex }: ProjectsWindowProps) => {
+const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: ProjectsWindowProps) => {
   const [expandedId, setExpandedId] = useState<string | null>(null)
 
   const toggleExpand = (id: string) => {
@@ -67,6 +68,7 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex }: ProjectsWindowP
       onClose={onClose}
       onMinimize={onMinimize}
       zIndex={zIndex}
+      soundEnabled={soundEnabled}
     >
       {/* Address Bar / Breadcrumb Toolbar */}
       <div

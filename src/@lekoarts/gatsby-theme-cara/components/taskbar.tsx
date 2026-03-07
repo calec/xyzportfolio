@@ -13,6 +13,8 @@ interface TaskbarWindow {
 interface TaskbarProps {
   windows: TaskbarWindow[]
   onWindowToggle: (id: string) => void
+  soundEnabled?: boolean
+  onSoundToggle?: () => void
 }
 
 const useBreakpoint = () => {
@@ -64,7 +66,7 @@ const Clock = () => {
   )
 }
 
-const Taskbar = ({ windows, onWindowToggle }: TaskbarProps) => {
+const Taskbar = ({ windows, onWindowToggle, soundEnabled = false, onSoundToggle }: TaskbarProps) => {
   const { isMobile } = useBreakpoint()
   const visibleWindows = windows.filter((w) => w.isOpen || w.isMinimized)
 
@@ -202,6 +204,35 @@ const Taskbar = ({ windows, onWindowToggle }: TaskbarProps) => {
           flexShrink: 0,
         }}
       />
+
+      {/* Sound toggle */}
+      {onSoundToggle && (
+        <button
+          onClick={onSoundToggle}
+          title={soundEnabled ? "Mute drag sound" : "Enable drag sound"}
+          sx={{
+            height: "28px",
+            width: "28px",
+            background: "transparent",
+            border: "1px solid rgba(51,255,51,0.3)",
+            color: soundEnabled ? "#33ff33" : "rgba(51,255,51,0.35)",
+            cursor: "pointer",
+            fontSize: "13px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexShrink: 0,
+            transition: "all 0.15s ease",
+            "&:hover": {
+              borderColor: "#33ff33",
+              color: "#33ff33",
+              boxShadow: "0 0 6px rgba(51,255,51,0.3)",
+            },
+          }}
+        >
+          {soundEnabled ? "🔊" : "🔇"}
+        </button>
+      )}
 
       {/* Clock */}
       <Clock />

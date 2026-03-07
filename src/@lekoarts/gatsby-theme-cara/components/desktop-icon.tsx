@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import React, { useState, useCallback, useRef } from "react"
+import React, { useCallback, useRef, useEffect } from "react"
 import { jsx } from "theme-ui"
 
 interface DesktopIconProps {
@@ -18,6 +18,13 @@ const isTouchDevice =
 const DesktopIcon = ({ id, icon, label, isSelected, onSelect, onOpen }: DesktopIconProps) => {
   const clickCountRef = useRef(0)
   const clickTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  // Ensure pending single-click timer is cleared on unmount
+  useEffect(() => {
+    return () => {
+      if (clickTimerRef.current) clearTimeout(clickTimerRef.current)
+    }
+  }, [])
 
   const handleClick = useCallback(() => {
     // Touch devices: single tap opens immediately

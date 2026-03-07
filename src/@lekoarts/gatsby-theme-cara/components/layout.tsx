@@ -26,11 +26,23 @@ const Layout = ({ children }: { children?: React.ReactNode }) => {
           margin: 0;
           padding: 0;
           overflow: hidden;
-          cursor: default;
+          cursor: crosshair;
           background: #0a0a0a;
         }
         *, *::before, *::after {
           box-sizing: border-box;
+        }
+        button, a, [role="button"], label, input, select, textarea {
+          cursor: pointer !important;
+        }
+        input[type="text"], input[type="email"], input[type="search"], textarea {
+          cursor: text !important;
+        }
+        .window-title-bar {
+          cursor: move;
+        }
+        button:hover, a:hover {
+          box-shadow: 0 0 6px rgba(51, 255, 51, 0.4);
         }
       `}</style>
       {!booted && <BootSequence onComplete={() => setBooted(true)} />}

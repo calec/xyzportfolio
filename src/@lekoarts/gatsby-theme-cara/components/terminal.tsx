@@ -9,6 +9,7 @@ interface TerminalProps {
   onMinimize?: () => void
   zIndex?: number
   onOpenWindow?: (id: string) => void
+  soundEnabled?: boolean
 }
 
 let _lineId = 5000
@@ -165,7 +166,7 @@ const COMMANDS: Record<string, { lines: string[]; color?: string; opensWindow?: 
   },
 }
 
-const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow }: TerminalProps) => {
+const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow, soundEnabled }: TerminalProps) => {
   const [outputLines, setOutputLines] = useState<TermLine[]>(() => [...WELCOME_LINES])
   const [input, setInput] = useState("")
   const [history, setHistory] = useState<string[]>([])
@@ -185,6 +186,7 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow }: Termina
   const containerRef = useRef<HTMLDivElement>(null)
   const matrixTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const matrixIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const matrixStartTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   // Auto-scroll to bottom whenever output changes
   useEffect(() => {
@@ -248,7 +250,8 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow }: Termina
     canvas.width = container.offsetWidth
     canvas.height = container.offsetHeight
 
-    const ctx = canvas.getContext("2d")!
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
     const fontSize = 14
     const cols = Math.floor(canvas.width / fontSize)
     const drops: number[] = Array.from({ length: cols }, () => Math.random() * -50)
@@ -257,14 +260,14 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow }: Termina
 
     function draw() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)"
-      ctx.fillRect(0, 0, canvas!.width, canvas!.height)
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
       ctx.fillStyle = "#33ff33"
       ctx.font = `${fontSize}px JetBrains Mono, monospace`
 
       for (let i = 0; i < drops.length; i++) {
         const char = chars[Math.floor(Math.random() * chars.length)]
         ctx.fillText(char, i * fontSize, drops[i] * fontSize)
-        if (drops[i] * fontSize > canvas!.height && Math.random() > 0.975) {
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
           drops[i] = 0
         }
         drops[i]++
@@ -285,6 +288,7 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow }: Termina
     return () => {
       if (matrixIntervalRef.current) clearInterval(matrixIntervalRef.current)
       if (matrixTimerRef.current) clearTimeout(matrixTimerRef.current)
+      if (matrixStartTimerRef.current) clearTimeout(matrixStartTimerRef.current)
     }
   }, [showMatrix])
 
@@ -335,7 +339,7 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow }: Termina
           ...prev,
           { text: "Initiating Matrix rain sequence...", color: "#55ffaa" },
         ])
-        setTimeout(() => setShowMatrix(true), 600)
+        matrixStartTimerRef.current = setTimeout(() => setShowMatrix(true), 600)
         return
       }
 
@@ -391,6 +395,7 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow }: Termina
       onClose={onClose}
       onMinimize={onMinimize}
       zIndex={zIndex}
+      soundEnabled={soundEnabled}
     >
       <style>{`
         @keyframes termBlink {

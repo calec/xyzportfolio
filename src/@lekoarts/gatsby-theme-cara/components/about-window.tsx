@@ -8,6 +8,7 @@ interface AboutWindowProps {
   onClose: () => void
   onMinimize?: () => void
   zIndex?: number
+  soundEnabled?: boolean
 }
 
 const asciiArt = [
@@ -90,7 +91,7 @@ const lines = [
   ``,
 ]
 
-const AboutWindow = ({ isOpen, onClose, onMinimize, zIndex }: AboutWindowProps) => {
+const AboutWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: AboutWindowProps) => {
   return (
     <Window
       title="README.txt"
@@ -101,6 +102,7 @@ const AboutWindow = ({ isOpen, onClose, onMinimize, zIndex }: AboutWindowProps) 
       onClose={onClose}
       onMinimize={onMinimize}
       zIndex={zIndex}
+      soundEnabled={soundEnabled}
     >
       {/* Blink keyframe injection */}
       <style>{`
