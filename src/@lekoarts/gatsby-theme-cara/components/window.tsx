@@ -15,6 +15,28 @@ interface WindowProps {
   onMinimize?: () => void
   zIndex?: number
   className?: string
+  soundEnabled?: boolean
+}
+
+function playDragClick() {
+  try {
+    const AudioCtx = window.AudioContext || (window as any).webkitAudioContext
+    if (!AudioCtx) return
+    const ctx = new AudioCtx()
+    const osc = ctx.createOscillator()
+    const gain = ctx.createGain()
+    osc.connect(gain)
+    gain.connect(ctx.destination)
+    osc.type = "square"
+    osc.frequency.setValueAtTime(660, ctx.currentTime)
+    osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.04)
+    gain.gain.setValueAtTime(0.08, ctx.currentTime)
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.04)
+    osc.start(ctx.currentTime)
+    osc.stop(ctx.currentTime + 0.05)
+  } catch (_) {
+    // AudioContext not available — silently ignore
+  }
 }
 
 const useBreakpoint = () => {
@@ -45,6 +67,7 @@ const Window = ({
   onMinimize,
   zIndex = 100,
   className,
+  soundEnabled = false,
 }: WindowProps) => {
   const { isMobile, isTablet, isDesktop } = useBreakpoint()
   const [isMaximized, setIsMaximized] = useState(false)
@@ -349,6 +372,7 @@ const Window = ({
         defaultPosition={defaultPosition}
         disabled={isMaximized}
         bounds="parent"
+        onStart={() => { if (soundEnabled) playDragClick() }}
       >
         {windowContent}
       </Draggable>

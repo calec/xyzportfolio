@@ -7,6 +7,7 @@ interface SkillsWindowProps {
   onClose: () => void
   onMinimize?: () => void
   zIndex?: number
+  soundEnabled?: boolean
 }
 
 const asciiArt = `  ██████╗ █████╗ ██╗     ███████╗
@@ -31,7 +32,7 @@ const infoRows: Array<{ key: string; value: string } | { separator: true }> = [
   { key: "Deploy:", value: "Heroku, Netlify" },
 ]
 
-const SkillsWindow = ({ isOpen, onClose, onMinimize, zIndex }: SkillsWindowProps) => {
+const SkillsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: SkillsWindowProps) => {
   return (
     <Window
       title="System Properties"
@@ -42,6 +43,7 @@ const SkillsWindow = ({ isOpen, onClose, onMinimize, zIndex }: SkillsWindowProps
       onClose={onClose}
       onMinimize={onMinimize}
       zIndex={zIndex}
+      soundEnabled={soundEnabled}
     >
       <div
         sx={{

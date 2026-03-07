@@ -8,9 +8,10 @@ interface ContactWindowProps {
   onClose: () => void
   onMinimize?: () => void
   zIndex?: number
+  soundEnabled?: boolean
 }
 
-const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex }: ContactWindowProps) => {
+const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: ContactWindowProps) => {
   return (
     <Window
       title="New Message"
@@ -21,6 +22,7 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex }: ContactWindowPro
       onClose={onClose}
       onMinimize={onMinimize}
       zIndex={zIndex}
+      soundEnabled={soundEnabled}
     >
       <div
         sx={{
