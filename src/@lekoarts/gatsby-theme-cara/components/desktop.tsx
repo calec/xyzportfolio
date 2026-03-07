@@ -1,10 +1,13 @@
 /** @jsx jsx */
 import React, { useState, useCallback, useReducer } from "react"
 import { jsx } from "theme-ui"
-import Window from "./window"
 import DesktopIcon from "./desktop-icon"
 import Taskbar from "./taskbar"
 import Scanlines from "./scanlines"
+import AboutWindow from "./about-window"
+import ProjectsWindow from "./projects-window"
+import SkillsWindow from "./skills-window"
+import ContactWindow from "./contact-window"
 
 type WindowState = {
   id: string
@@ -28,12 +31,12 @@ const ICONS = [
   { id: "terminal", icon: ">_", label: "Terminal" },
 ]
 
-const WINDOW_META: Record<string, { title: string; icon: string; defaultPosition: { x: number; y: number } }> = {
-  about: { title: "README.txt", icon: "📄", defaultPosition: { x: 120, y: 60 } },
-  projects: { title: "C:\\Projects", icon: "📁", defaultPosition: { x: 200, y: 80 } },
-  system: { title: "System Properties", icon: "⚙️", defaultPosition: { x: 280, y: 100 } },
-  mail: { title: "New Message", icon: "📧", defaultPosition: { x: 160, y: 120 } },
-  terminal: { title: "Terminal", icon: ">_", defaultPosition: { x: 240, y: 60 } },
+const WINDOW_META: Record<string, { title: string; icon: string }> = {
+  about: { title: "README.txt", icon: "📄" },
+  projects: { title: "C:\\Projects", icon: "📁" },
+  system: { title: "System Properties", icon: "⚙️" },
+  mail: { title: "New Message", icon: "📧" },
+  terminal: { title: "Terminal", icon: ">_" },
 }
 
 const MAX_Z = 200
@@ -77,7 +80,6 @@ function windowReducer(state: WindowState[], action: WindowAction): WindowState[
       const win = state.find((w) => w.id === action.id)
       if (!win) return state
       if (!win.isOpen && !win.isMinimized) {
-        // Open it
         const maxZ = getMaxZ(state)
         return state.map((w) =>
           w.id === action.id
@@ -86,7 +88,6 @@ function windowReducer(state: WindowState[], action: WindowAction): WindowState[
         )
       }
       if (win.isMinimized) {
-        // Restore
         const maxZ = getMaxZ(state)
         return state.map((w) =>
           w.id === action.id
@@ -94,7 +95,6 @@ function windowReducer(state: WindowState[], action: WindowAction): WindowState[
             : w
         )
       }
-      // Minimize
       return state.map((w) =>
         w.id === action.id ? { ...w, isMinimized: true } : w
       )
@@ -103,21 +103,6 @@ function windowReducer(state: WindowState[], action: WindowAction): WindowState[
       return state
   }
 }
-
-const WindowContent = ({ id }: { id: string }) => (
-  <div
-    sx={{
-      fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
-      fontSize: "13px",
-      color: "#33ff33",
-      lineHeight: 1.7,
-    }}
-  >
-    <span sx={{ color: "rgba(51, 255, 51, 0.5)" }}>{`// Content for "${id}" window`}</span>
-    <br />
-    <span sx={{ color: "rgba(51, 255, 51, 0.5)" }}>{`// This will be populated in Task 4`}</span>
-  </div>
-)
 
 const Desktop = () => {
   const [windows, dispatch] = useReducer(windowReducer, initialWindows)
@@ -155,6 +140,8 @@ const Desktop = () => {
     isMinimized: w.isMinimized,
   }))
 
+  const getWin = (id: string) => windows.find((w) => w.id === id)!
+
   return (
     <div
       sx={{
@@ -170,7 +157,6 @@ const Desktop = () => {
         position: "relative",
       }}
       onClick={(e) => {
-        // Deselect icon on background click
         if (e.currentTarget === e.target) {
           setSelectedIcon(null)
         }
@@ -201,28 +187,62 @@ const Desktop = () => {
         ))}
       </div>
 
-      {/* Open Windows */}
-      {windows.map((win) => {
-        if (!win.isOpen || win.isMinimized) return null
-        const meta = WINDOW_META[win.id]
+      {/* Content Windows */}
+      {(() => {
+        const about = getWin("about")
         return (
-          // onMouseDown bubbles up from the fixed-position Window to bring it to front
-          <div key={win.id} onMouseDown={() => handleWindowFocus(win.id)}>
-            <Window
-              title={meta?.title ?? win.id}
-              icon={meta?.icon}
-              defaultPosition={meta?.defaultPosition ?? { x: 150, y: 100 }}
-              defaultSize={{ width: 600, height: 400 }}
-              isOpen={win.isOpen && !win.isMinimized}
-              onClose={() => handleWindowClose(win.id)}
-              onMinimize={() => handleWindowMinimize(win.id)}
-              zIndex={win.zIndex}
-            >
-              <WindowContent id={win.id} />
-            </Window>
+          <div onMouseDown={() => handleWindowFocus("about")}>
+            <AboutWindow
+              isOpen={about.isOpen && !about.isMinimized}
+              onClose={() => handleWindowClose("about")}
+              onMinimize={() => handleWindowMinimize("about")}
+              zIndex={about.zIndex}
+            />
           </div>
         )
-      })}
+      })()}
+
+      {(() => {
+        const projects = getWin("projects")
+        return (
+          <div onMouseDown={() => handleWindowFocus("projects")}>
+            <ProjectsWindow
+              isOpen={projects.isOpen && !projects.isMinimized}
+              onClose={() => handleWindowClose("projects")}
+              onMinimize={() => handleWindowMinimize("projects")}
+              zIndex={projects.zIndex}
+            />
+          </div>
+        )
+      })()}
+
+      {(() => {
+        const system = getWin("system")
+        return (
+          <div onMouseDown={() => handleWindowFocus("system")}>
+            <SkillsWindow
+              isOpen={system.isOpen && !system.isMinimized}
+              onClose={() => handleWindowClose("system")}
+              onMinimize={() => handleWindowMinimize("system")}
+              zIndex={system.zIndex}
+            />
+          </div>
+        )
+      })()}
+
+      {(() => {
+        const mail = getWin("mail")
+        return (
+          <div onMouseDown={() => handleWindowFocus("mail")}>
+            <ContactWindow
+              isOpen={mail.isOpen && !mail.isMinimized}
+              onClose={() => handleWindowClose("mail")}
+              onMinimize={() => handleWindowMinimize("mail")}
+              zIndex={mail.zIndex}
+            />
+          </div>
+        )
+      })()}
 
       {/* Taskbar */}
       <Taskbar windows={taskbarWindows} onWindowToggle={handleTaskbarToggle} />
