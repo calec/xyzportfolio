@@ -120,7 +120,8 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex }: ProjectsWindowP
       <div
         sx={{
           display: "grid",
-          gridTemplateColumns: "1fr 120px 80px",
+          // Mobile: name only; tablet+: full columns
+          gridTemplateColumns: ["1fr", "1fr", "1fr 120px 80px"],
           gap: "8px",
           px: "8px",
           pb: "6px",
@@ -134,8 +135,8 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex }: ProjectsWindowP
         }}
       >
         <span>Name</span>
-        <span>Modified</span>
-        <span>Size</span>
+        <span sx={{ display: ["none", "none", "block"] }}>Modified</span>
+        <span sx={{ display: ["none", "none", "block"] }}>Size</span>
       </div>
 
       {/* Project File Entries */}
@@ -169,7 +170,7 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex }: ProjectsWindowP
                 onClick={() => toggleExpand(project.id)}
                 sx={{
                   display: "grid",
-                  gridTemplateColumns: "1fr 120px 80px",
+                  gridTemplateColumns: ["1fr", "1fr", "1fr 120px 80px"],
                   gap: "8px",
                   px: "8px",
                   py: "8px",
@@ -184,6 +185,7 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex }: ProjectsWindowP
                     alignItems: "center",
                     gap: "8px",
                     overflow: "hidden",
+                    justifyContent: "space-between",
                   }}
                 >
                   <span sx={{ fontSize: "14px", flexShrink: 0 }}>📄</span>
@@ -217,11 +219,27 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex }: ProjectsWindowP
                       {project.status}
                     </span>
                   )}
+                  {/* Expand arrow visible only on mobile */}
+                  <span
+                    sx={{
+                      display: ["block", "block", "none"],
+                      color: "#33ff33",
+                      fontSize: "10px",
+                      fontFamily: '"JetBrains Mono", monospace',
+                      transform: isExpanded ? "rotate(90deg)" : "rotate(0deg)",
+                      transition: "transform 0.2s ease",
+                      flexShrink: 0,
+                      ml: "auto",
+                    }}
+                  >
+                    {">"}
+                  </span>
                 </div>
 
-                {/* Modified column */}
+                {/* Modified column — hidden on mobile */}
                 <span
                   sx={{
+                    display: ["none", "none", "block"],
                     color: "#888",
                     fontFamily: '"JetBrains Mono", monospace',
                     fontSize: "11px",
@@ -230,10 +248,10 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex }: ProjectsWindowP
                   {project.modified}
                 </span>
 
-                {/* Size column */}
+                {/* Size column + expand arrow — hidden on mobile; arrow shown in name col instead */}
                 <div
                   sx={{
-                    display: "flex",
+                    display: ["none", "none", "flex"],
                     alignItems: "center",
                     justifyContent: "space-between",
                   }}
