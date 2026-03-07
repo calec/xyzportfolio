@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
-import { keyframes, Global, css } from "@emotion/react"
+import { keyframes, Global, css } from "@emotion/core"
 
 const flicker = keyframes`
   0%   { opacity: 0.97; }
