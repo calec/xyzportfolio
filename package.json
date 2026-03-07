@@ -24,7 +24,7 @@
     "gatsby-plugin-offline": "^2.2.10",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "react-draggable": "^4.5.0",
+    "react-draggable": "^4.4.6",
     "react-spring": "^8.0.27"
   },
   "devDependencies": {
