@@ -33,12 +33,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Cara - @lekoarts/gatsby-theme-cara`,
-        short_name: `Cara`,
-        description: `Playful and Colorful One-Page portfolio featuring Parallax effects and animations`,
+        name: `CALE_OS — Cale Corwin's Portfolio`,
+        short_name: `CALE_OS`,
+        description: `Retro terminal OS portfolio by Cale Corwin`,
         start_url: `/`,
-        background_color: `#141821`,
-        theme_color: `#f6ad55`,
+        background_color: `#0a0a0a`,
+        theme_color: `#33ff33`,
         display: `standalone`,
         icons: [
           {
