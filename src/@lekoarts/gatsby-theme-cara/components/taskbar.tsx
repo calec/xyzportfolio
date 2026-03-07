@@ -15,6 +15,22 @@ interface TaskbarProps {
   onWindowToggle: (id: string) => void
 }
 
+const useBreakpoint = () => {
+  const getWidth = () => (typeof window !== "undefined" ? window.innerWidth : 1200)
+  const [width, setWidth] = useState(getWidth)
+
+  useEffect(() => {
+    const handler = () => setWidth(window.innerWidth)
+    window.addEventListener("resize", handler)
+    return () => window.removeEventListener("resize", handler)
+  }, [])
+
+  return {
+    isMobile: width < 768,
+    isTablet: width >= 768 && width < 1024,
+  }
+}
+
 const Clock = () => {
   const [time, setTime] = useState("")
 
@@ -49,6 +65,7 @@ const Clock = () => {
 }
 
 const Taskbar = ({ windows, onWindowToggle }: TaskbarProps) => {
+  const { isMobile } = useBreakpoint()
   const visibleWindows = windows.filter((w) => w.isOpen || w.isMinimized)
 
   return (
@@ -63,8 +80,8 @@ const Taskbar = ({ windows, onWindowToggle }: TaskbarProps) => {
         borderTop: "1px solid rgba(51, 255, 51, 0.3)",
         display: "flex",
         alignItems: "center",
-        px: "8px",
-        gap: "6px",
+        px: isMobile ? "6px" : "8px",
+        gap: isMobile ? "4px" : "6px",
         zIndex: 1000,
         fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
       }}
@@ -73,12 +90,12 @@ const Taskbar = ({ windows, onWindowToggle }: TaskbarProps) => {
       <button
         sx={{
           height: "28px",
-          px: "10px",
+          px: isMobile ? "8px" : "10px",
           background: "linear-gradient(180deg, #1a1a2e 0%, #0d0d0d 100%)",
           border: "1px solid #33ff33",
           color: "#33ff33",
           fontFamily: '"Press Start 2P", monospace',
-          fontSize: "8px",
+          fontSize: isMobile ? "6px" : "8px",
           cursor: "pointer",
           letterSpacing: "0.05em",
           textShadow: "0 0 6px rgba(51, 255, 51, 0.8)",
@@ -95,7 +112,7 @@ const Taskbar = ({ windows, onWindowToggle }: TaskbarProps) => {
           },
         }}
       >
-        CALE_OS
+        {isMobile ? "OS" : "CALE_OS"}
       </button>
 
       {/* Divider */}
@@ -125,8 +142,11 @@ const Taskbar = ({ windows, onWindowToggle }: TaskbarProps) => {
             title={win.title}
             sx={{
               height: "28px",
-              px: "8px",
-              maxWidth: "140px",
+              px: isMobile ? "6px" : "8px",
+              // On mobile: icon-only buttons (fixed width); on tablet/desktop: show title text
+              width: isMobile ? "36px" : "auto",
+              maxWidth: isMobile ? "36px" : "140px",
+              minWidth: isMobile ? "36px" : "auto",
               background: win.isMinimized
                 ? "transparent"
                 : "rgba(51, 255, 51, 0.1)",
@@ -135,10 +155,11 @@ const Taskbar = ({ windows, onWindowToggle }: TaskbarProps) => {
                 : "1px solid rgba(51, 255, 51, 0.6)",
               color: "#33ff33",
               fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
-              fontSize: "10px",
+              fontSize: isMobile ? "14px" : "10px",
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
+              justifyContent: isMobile ? "center" : "flex-start",
               gap: "4px",
               overflow: "hidden",
               flexShrink: 0,
@@ -152,15 +173,22 @@ const Taskbar = ({ windows, onWindowToggle }: TaskbarProps) => {
               },
             }}
           >
-            {win.icon && <span sx={{ flexShrink: 0, fontSize: "12px" }}>{win.icon}</span>}
-            <span
-              sx={{
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-            >
-              {win.title}
-            </span>
+            {win.icon && (
+              <span sx={{ flexShrink: 0, fontSize: isMobile ? "14px" : "12px" }}>
+                {win.icon}
+              </span>
+            )}
+            {/* Hide title text on mobile — icon only */}
+            {!isMobile && (
+              <span
+                sx={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
+                {win.title}
+              </span>
+            )}
           </button>
         ))}
       </div>

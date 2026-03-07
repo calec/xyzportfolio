@@ -11,11 +11,22 @@ interface DesktopIconProps {
   onOpen: (id: string) => void
 }
 
+// On touch devices, single tap opens the window (no double-click needed)
+const isTouchDevice =
+  typeof window !== "undefined" && ("ontouchstart" in window || navigator.maxTouchPoints > 0)
+
 const DesktopIcon = ({ id, icon, label, isSelected, onSelect, onOpen }: DesktopIconProps) => {
   const clickCountRef = useRef(0)
   const clickTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const handleClick = useCallback(() => {
+    // Touch devices: single tap opens immediately
+    if (isTouchDevice) {
+      onOpen(id)
+      return
+    }
+
+    // Desktop: double-click to open, single-click to select
     clickCountRef.current += 1
 
     if (clickCountRef.current === 1) {

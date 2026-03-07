@@ -46,17 +46,19 @@ const SkillsWindow = ({ isOpen, onClose, onMinimize, zIndex }: SkillsWindowProps
       <div
         sx={{
           display: "flex",
-          flexDirection: "row",
-          gap: "32px",
+          // Stack vertically on narrow screens, side-by-side on wider ones
+          flexDirection: ["column", "column", "row"],
+          gap: ["16px", "16px", "32px"],
           fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
           fontSize: "12px",
           lineHeight: 1.6,
           height: "100%",
         }}
       >
-        {/* Left column: ASCII art */}
+        {/* Left column: ASCII art — hidden on mobile to save space */}
         <div
           sx={{
+            display: ["none", "none", "block"],
             flexShrink: 0,
             color: "#00d4ff",
             textShadow: "0 0 8px rgba(0, 212, 255, 0.5)",
