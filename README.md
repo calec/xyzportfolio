@@ -2,13 +2,14 @@
 
 [View Profile](https://cale.xyz)
 
-## Stack
+## DevOps Stack
 
+* Azure
 * Github
-* Gatsby(*React*)
-* Markdown
-* Netlify
+* Vercel
 
-## Theme
+## Languages
 
-[LekoArt's Cara](https://cara.lekoarts.de)
+* JavaScript
+* TypeScript
+* SQL

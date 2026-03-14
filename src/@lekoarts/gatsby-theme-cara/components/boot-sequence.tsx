@@ -8,20 +8,20 @@ interface BootSequenceProps {
 }
 
 const BOOT_LINES = [
-  "CALE_OS BIOS v2.0",
-  "Copyright (C) 2024 Cale Corwin Industries",
+  "C4L3_OS BIOS v2.0",
+  "Copyright (C) 2026",
   "",
   "Checking memory... 640K OK",
   "Detecting drives... SSD0: portfolio.img [OK]",
   "Loading kernel modules...",
   "  \u251C\u2500\u2500 react.ko .............. [OK]",
-  "  \u251C\u2500\u2500 gatsby.ko ............. [OK]",
+  "  \u251C\u2500\u2500 typescript.ko ............. [OK]",
   "  \u251C\u2500\u2500 creativity.ko ......... [OK]",
   "  \u2514\u2500\u2500 coffee.ko ............. [CRITICAL]",
   "",
-  "Starting CALE_OS...",
+  "Starting C4L3_OS...",
   "",
-  "> Welcome to CALE_OS",
+  "> Welcome to cale.xyz",
   "> Type 'help' for available commands",
 ]
 
