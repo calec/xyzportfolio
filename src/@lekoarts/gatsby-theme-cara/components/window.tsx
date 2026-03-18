@@ -136,9 +136,18 @@ const Window = ({
           height: defaultSize.height,
         }
 
+  // On desktop (where react-draggable controls position via CSS transform), only
+  // animate opacity. If we also animate `transform` via react-spring on the same
+  // element, react-spring overwrites react-draggable's translate whenever React
+  // re-renders (e.g. on focus/zIndex change), snapping the window to the top.
+  const springStyle =
+    isDesktop && !isMaximized
+      ? { opacity: springProps.opacity }
+      : springProps
+
   const windowContent = (
     <animated.div
-      style={{ ...springProps, ...windowStyle }}
+      style={{ ...springStyle, ...windowStyle }}
       className={className}
       sx={{
         display: "flex",
