@@ -19,7 +19,7 @@ const asciiArt = `  ██████╗ █████╗ ██╗     █�
 
 const infoRows: Array<{ key: string; value: string } | { separator: true }> = [
   { separator: true },
-  { key: "OS:", value: "CALE_OS v2.0" },
+  { key: "OS:", value: "C4L3 OS v2.0" },
   { key: "Host:", value: "cale.xyz" },
   { key: "Shell:", value: "bash 5.1" },
   { key: "Uptime:", value: "5+ years experience" },
