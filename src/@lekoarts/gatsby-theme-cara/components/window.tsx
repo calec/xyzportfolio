@@ -380,7 +380,12 @@ const Window = ({
         handle=".window-title-bar"
         defaultPosition={defaultPosition}
         disabled={isMaximized}
-        bounds="parent"
+        bounds={{
+          left: 0,
+          top: 0,
+          right: (typeof window !== "undefined" ? window.innerWidth : 1920) - Number(defaultSize.width),
+          bottom: (typeof window !== "undefined" ? window.innerHeight : 1080) - Number(defaultSize.height),
+        }}
         onStart={() => { if (soundEnabled) playDragClick() }}
       >
         {windowContent}
