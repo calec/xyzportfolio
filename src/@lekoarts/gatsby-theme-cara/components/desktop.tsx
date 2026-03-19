@@ -9,6 +9,7 @@ import ProjectsWindow from "./projects-window"
 import SkillsWindow from "./skills-window"
 import ContactWindow from "./contact-window"
 import Terminal from "./terminal"
+import StrongBadWindow from "./strongbad-window"
 
 const KONAMI = [
   "ArrowUp","ArrowUp","ArrowDown","ArrowDown",
@@ -44,6 +45,7 @@ const WINDOW_META: Record<string, { title: string; icon: string }> = {
   system: { title: "System Properties", icon: "⚙️" },
   mail: { title: "New Message", icon: "📧" },
   terminal: { title: "Terminal", icon: ">_" },
+  strongbad: { title: "COMPY 386", icon: "💻" },
 }
 
 const MAX_Z = 200
@@ -52,12 +54,15 @@ function getMaxZ(windows: WindowState[]): number {
   return windows.reduce((max, w) => Math.max(max, w.zIndex), MAX_Z)
 }
 
-const initialWindows: WindowState[] = ICONS.map((icon) => ({
-  id: icon.id,
-  isOpen: false,
-  isMinimized: false,
-  zIndex: MAX_Z,
-}))
+const initialWindows: WindowState[] = [
+  ...ICONS.map((icon) => ({
+    id: icon.id,
+    isOpen: false,
+    isMinimized: false,
+    zIndex: MAX_Z,
+  })),
+  { id: "strongbad", isOpen: false, isMinimized: false, zIndex: MAX_Z },
+]
 
 function windowReducer(state: WindowState[], action: WindowAction): WindowState[] {
   switch (action.type) {
@@ -203,6 +208,11 @@ const Desktop = () => {
     setColorMode(colorMode === "amber" ? "default" : "amber")
   }, [colorMode, setColorMode])
 
+  const handleCheckEmail = useCallback(() => {
+    setContextMenu(null)
+    dispatch({ type: "OPEN", id: "strongbad" })
+  }, [])
+
   const handleIconSelect = useCallback((id: string) => {
     setSelectedIcon(id)
   }, [])
@@ -338,8 +348,9 @@ const Desktop = () => {
             { label: "Refresh", action: handleRefresh },
             { label: "View Source", action: handleViewSource },
             { label: "About CALE_OS", action: handleAboutOS },
+            { label: "📧 Check Email", action: handleCheckEmail },
             { label: colorMode === "amber" ? "Theme: Switch to Green" : "Theme: Switch to Amber", action: handleChangeTheme },
-          ].map((item, i) => (
+          ].map((item, i, arr) => (
             <button
               key={i}
               onClick={item.action}
@@ -350,7 +361,7 @@ const Desktop = () => {
                 py: "8px",
                 background: "transparent",
                 border: "none",
-                borderBottom: i < 3 ? "1px solid rgba(51,255,51,0.15)" : "none",
+                borderBottom: i < arr.length - 1 ? "1px solid rgba(51,255,51,0.15)" : "none",
                 color: "#33ff33",
                 fontFamily: "inherit",
                 fontSize: "inherit",
@@ -632,6 +643,21 @@ const Desktop = () => {
               onMinimize={() => handleWindowMinimize("terminal")}
               zIndex={terminal.zIndex}
               onOpenWindow={handleOpenWindow}
+              soundEnabled={soundEnabled}
+            />
+          </div>
+        )
+      })()}
+
+      {(() => {
+        const sb = getWin("strongbad")
+        return (
+          <div onMouseDown={() => handleWindowFocus("strongbad")}>
+            <StrongBadWindow
+              isOpen={sb.isOpen && !sb.isMinimized}
+              onClose={() => handleWindowClose("strongbad")}
+              onMinimize={() => handleWindowMinimize("strongbad")}
+              zIndex={sb.zIndex}
               soundEnabled={soundEnabled}
             />
           </div>
