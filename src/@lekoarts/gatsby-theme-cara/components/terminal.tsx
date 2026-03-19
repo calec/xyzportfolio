@@ -22,8 +22,8 @@ type TermLine = {
 }
 
 const WELCOME_LINES: TermLine[] = [
-  { id: nextId(), text: "CALE_OS Terminal v2.0", color: "#55ffaa" },
-  { id: nextId(), text: 'Copyright (C) 2024 Cale Corwin Industries', color: "#888888" },
+  { id: nextId(), text: "C4L3 OS Terminal v2.0", color: "#55ffaa" },
+  { id: nextId(), text: 'Copyright (C) 2026 Cale Corwin Industries', color: "#888888" },
   { id: nextId(), text: 'Type "help" for available commands.', color: "#aaaaaa" },
   { id: nextId(), text: "" },
 ]
@@ -85,7 +85,7 @@ const COMMANDS: Record<string, { lines: string[]; color?: string; opensWindow?: 
     lines: [
       "cale@portfolio",
       "───────────────",
-      "OS:        CALE_OS v2.0",
+      "OS:        C4L3 OS v2.0",
       "Host:      cale.xyz",
       "Shell:     bash 5.1",
       "Languages: JavaScript (ES6+), TypeScript",
@@ -223,7 +223,19 @@ const COMMANDS: Record<string, { lines: string[]; color?: string; opensWindow?: 
   },
 }
 
+const useBreakpoint = () => {
+  const getWidth = () => (typeof window !== "undefined" ? window.innerWidth : 1200)
+  const [width, setWidth] = useState(getWidth)
+  useEffect(() => {
+    const handler = () => setWidth(window.innerWidth)
+    window.addEventListener("resize", handler)
+    return () => window.removeEventListener("resize", handler)
+  }, [])
+  return { isMobile: width < 768 }
+}
+
 const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow, soundEnabled }: TerminalProps) => {
+  const { isMobile } = useBreakpoint()
   const [outputLines, setOutputLines] = useState<TermLine[]>(() => [...WELCOME_LINES])
   const [input, setInput] = useState("")
   const [history, setHistory] = useState<string[]>([])
@@ -252,12 +264,12 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow, soundEnab
     }
   }, [outputLines, typingLine])
 
-  // Focus input when window opens
+  // Focus input when window opens (skip on mobile to prevent keyboard popup)
   useEffect(() => {
-    if (isOpen && inputRef.current) {
+    if (isOpen && !isMobile && inputRef.current) {
       inputRef.current.focus()
     }
-  }, [isOpen])
+  }, [isOpen, isMobile])
 
   // Start typing when there are pending lines and we're not currently typing
   useEffect(() => {
@@ -467,7 +479,8 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow, soundEnab
         sx={{
           display: "flex",
           flexDirection: "column",
-          height: "100%",
+          flex: 1,
+          minHeight: 0,
           fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
           fontSize: "13px",
           cursor: "text",

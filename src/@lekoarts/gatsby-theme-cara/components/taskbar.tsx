@@ -15,6 +15,7 @@ interface TaskbarProps {
   onWindowToggle: (id: string) => void
   soundEnabled?: boolean
   onSoundToggle?: () => void
+  onOSButtonClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 const useBreakpoint = () => {
@@ -66,7 +67,7 @@ const Clock = () => {
   )
 }
 
-const Taskbar = ({ windows, onWindowToggle, soundEnabled = false, onSoundToggle }: TaskbarProps) => {
+const Taskbar = ({ windows, onWindowToggle, soundEnabled = false, onSoundToggle, onOSButtonClick }: TaskbarProps) => {
   const { isMobile } = useBreakpoint()
   const visibleWindows = windows.filter((w) => w.isOpen || w.isMinimized)
 
@@ -88,8 +89,9 @@ const Taskbar = ({ windows, onWindowToggle, soundEnabled = false, onSoundToggle 
         fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
       }}
     >
-      {/* START / CALE_OS logo button */}
+      {/* START / C4L3 OS logo button */}
       <button
+        onClick={onOSButtonClick}
         sx={{
           height: "28px",
           px: isMobile ? "8px" : "10px",
@@ -114,7 +116,7 @@ const Taskbar = ({ windows, onWindowToggle, soundEnabled = false, onSoundToggle 
           },
         }}
       >
-        {isMobile ? "OS" : "CALE_OS"}
+        {"C4L3 OS"}
       </button>
 
       {/* Divider */}

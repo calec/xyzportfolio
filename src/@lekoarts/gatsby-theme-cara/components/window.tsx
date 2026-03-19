@@ -325,6 +325,9 @@ const Window = ({
       <div
         sx={{
           flex: 1,
+          minHeight: 0,
+          display: "flex",
+          flexDirection: "column",
           background: "#0d0d0d",
           p: isMobile ? "12px" : "16px",
           overflowY: "auto",

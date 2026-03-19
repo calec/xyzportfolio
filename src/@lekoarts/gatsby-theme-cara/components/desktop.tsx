@@ -213,6 +213,12 @@ const Desktop = () => {
     dispatch({ type: "OPEN", id: "strongbad" })
   }, [])
 
+  const handleOSButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation()
+    const rect = e.currentTarget.getBoundingClientRect()
+    setContextMenu({ x: rect.left, y: rect.top })
+  }, [])
+
   const handleIconSelect = useCallback((id: string) => {
     setSelectedIcon(id)
   }, [])
@@ -333,7 +339,7 @@ const Desktop = () => {
           sx={{
             position: "fixed",
             left: Math.min(contextMenu.x, (typeof window !== "undefined" ? window.innerWidth : 800) - 200),
-            top: Math.min(contextMenu.y, (typeof window !== "undefined" ? window.innerHeight : 600) - 160),
+            top: Math.min(contextMenu.y, (typeof window !== "undefined" ? window.innerHeight : 600) - 220),
             zIndex: 9997,
             background: "#111",
             border: "1px solid rgba(51,255,51,0.5)",
@@ -347,7 +353,7 @@ const Desktop = () => {
           {[
             { label: "Refresh", action: handleRefresh },
             { label: "View Source", action: handleViewSource },
-            { label: "About CALE_OS", action: handleAboutOS },
+            { label: "About C4L3 OS", action: handleAboutOS },
             { label: "📧 Check Email", action: handleCheckEmail },
             { label: colorMode === "amber" ? "Theme: Switch to Green" : "Theme: Switch to Amber", action: handleChangeTheme },
           ].map((item, i, arr) => (
@@ -380,7 +386,7 @@ const Desktop = () => {
         </div>
       )}
 
-      {/* About CALE_OS dialog */}
+      {/* About C4L3 OS dialog */}
       {showAboutDialog && (
         <div
           sx={{
@@ -408,7 +414,7 @@ const Desktop = () => {
             {/* Title bar */}
             <div sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", px: 2, py: "6px", background: "linear-gradient(90deg,#1a1a2e,#0a0a0a)", borderBottom: "1px solid rgba(51,255,51,0.3)" }}>
               <span sx={{ fontFamily: '"Press Start 2P", monospace', fontSize: "9px", color: "#33ff33" }}>
-                ℹ️ About CALE_OS
+                ℹ️ About C4L3 OS
               </span>
               <button
                 onClick={() => setShowAboutDialog(false)}
@@ -418,12 +424,12 @@ const Desktop = () => {
             {/* Body */}
             <div sx={{ p: "20px", color: "#33ff33", lineHeight: 1.8 }}>
               <div sx={{ fontFamily: '"Press Start 2P", monospace', fontSize: "11px", mb: 3, textShadow: "0 0 8px rgba(51,255,51,0.6)" }}>
-                CALE_OS v2.0
+                C4L3 OS v2.0
               </div>
               <div sx={{ color: "#aaa", mb: 1 }}>Built by: <span sx={{ color: "#33ff33" }}>Cale Corwin</span></div>
               <div sx={{ color: "#aaa", mb: 1 }}>Stack: <span sx={{ color: "#33ff33" }}>React + Gatsby + TypeScript</span></div>
               <div sx={{ color: "#aaa", mb: 1 }}>Theme: <span sx={{ color: "#33ff33" }}>Retro Terminal OS</span></div>
-              <div sx={{ color: "#aaa", mb: 3 }}>Year: <span sx={{ color: "#33ff33" }}>2024</span></div>
+              <div sx={{ color: "#aaa", mb: 3 }}>Year: <span sx={{ color: "#33ff33" }}>{new Date().getFullYear()}</span></div>
               <div sx={{ color: "#555", fontSize: "11px" }}>
                 Try: ↑↑↓↓←→←→BA
               </div>
@@ -460,7 +466,7 @@ const Desktop = () => {
               letterSpacing: "0.1em",
             }}
           >
-            CALE_OS v2.0
+            C4L3 OS v2.0
           </div>
           {ICONS.map((icon) => (
             <button
@@ -670,6 +676,7 @@ const Desktop = () => {
         onWindowToggle={handleTaskbarToggle}
         soundEnabled={soundEnabled}
         onSoundToggle={() => setSoundEnabled(prev => !prev)}
+        onOSButtonClick={handleOSButtonClick}
       />
 
       {/* Scanlines overlay — on top of everything */}
