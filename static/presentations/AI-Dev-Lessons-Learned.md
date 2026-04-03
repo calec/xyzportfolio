@@ -484,13 +484,13 @@ Honesty about what didn't work is important. AI is not magic. It's a force multi
 
 ---
 
-## The Playbook — 4-Week Rollout
+## The Playbook
 
 | Week | Focus | Actions |
 |------|-------|---------|
 | **1 · Foundation** | Instruction file | Create project instruction file (architecture + patterns + constraints); document your "never do this" list; set up quality gates |
 | **2 · Task Structure** | Workflow definition | Define task template (goal, subtasks, constraints, exit criteria); structured task tracking; establish domain vocabulary |
-| **3 · Workflow** | Agent model | Adopt explore-first pattern; use plan agents for multi-file changes; run quality gates on every change |
+| **3 · Workflow** | Agent models | Adopt explore-first pattern; use plan agents for multi-file changes; run quality gates on every change |
 | **4 · Iterate** | Continuous improvement | Review instruction file weekly; track what AI gets wrong → add constraints; measure tasks/week, merge rate, bug rate |
 
 > Week 1 is the highest ROI. The instruction file alone transforms AI output. Most teams see measurable productivity gains by week 2.
@@ -525,9 +525,9 @@ These metrics tell you if AI-assisted development is actually working. The most 
 **Requesting approval to:**
 
 1. **Pilot with Product Owners** using this playbook (4-week rollout)
-2. **Standardize the instruction file format** across the org & implement for individual apps
-3. **Add AI-assisted development to engineering onboarding**
-
+2. **Standardize the instruction file format** across the EMS & implement shared resource across Dev team
+3. **Agent delivered features driven by Product** support Product 
+team delivering first new features following new pipeline. 
 <br>
 
 <!--
