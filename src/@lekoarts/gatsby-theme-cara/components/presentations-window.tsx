@@ -21,6 +21,13 @@ interface PresentationMeta {
 
 const PRESENTATIONS: PresentationMeta[] = [
   {
+    id: "ai-dev-lessons-learned",
+    title: "AI-Assisted Development",
+    filename: "AI-Dev-Lessons-Learned.md",
+    description: "From experiment to playbook — building production apps with AI agents",
+    date: "2025-04-03",
+  },
+  {
     id: "web-dev-journey",
     title: "My Web Dev Journey",
     filename: "web-dev-journey.md",
