@@ -2,19 +2,256 @@
 marp: true
 theme: default
 paginate: true
-backgroundColor: "#ffffff"
 style: |
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  /* ── BASE SLIDE ──────────────────────────────────────── */
   section {
-    font-size: 1.1rem;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #ffffff;
+    color: #0d0d0d;
+    padding: 40px 56px;
+    font-size: 0.98rem;
+    line-height: 1.55;
   }
+
+  /* ── LEAD SLIDES ─────────────────────────────────────── */
+  section.lead {
+    background: linear-gradient(150deg, #071624 0%, #0a1f35 55%, #0e2d4a 100%);
+    color: #e8f1f8;
+    justify-content: center;
+    text-align: left;
+    position: relative;
+  }
+
+  section.lead::after {
+    content: attr(data-marpit-pagination) ' / ' attr(data-marpit-pagination-total);
+    color: #4caf78;
+    font-size: 0.72rem;
+    font-weight: 500;
+  }
+
+  section.lead::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, #2e7d32, #43a047, #6a1b9a);
+  }
+
   section.lead h1 {
-    font-size: 2rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    border: none;
+    border-bottom: 3px solid #2e7d32;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
   }
+
+  section.lead h2 {
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #e8f1f8;
+    border: none;
+    border-bottom: 3px solid #2e7d32;
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  section.lead p {
+    color: #a8c8e0;
+  }
+
+  section.lead em {
+    color: #7ed4a8;
+    font-style: italic;
+  }
+
+  section.lead strong {
+    color: #e8f8ee;
+    font-weight: 600;
+  }
+
+  section.lead table thead tr {
+    background: rgba(46, 125, 50, 0.35) !important;
+  }
+
+  section.lead table thead th {
+    color: #e0f0e8 !important;
+  }
+
+  section.lead table tbody tr:nth-child(odd) {
+    background: rgba(255, 255, 255, 0.07) !important;
+  }
+
+  section.lead table tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.03) !important;
+  }
+
+  section.lead table tbody td {
+    color: #b8d4e4 !important;
+    border-bottom-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  /* ── HEADINGS ─────────────────────────────────────────── */
+  h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0a1929;
+    border-left: 5px solid #2e7d32;
+    padding-left: 14px;
+    margin-bottom: 0.8rem;
+    line-height: 1.25;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #0a1929;
+    border-bottom: 2px solid #2e7d32;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1565c0;
+    margin-bottom: 0.35rem;
+  }
+
+  /* ── TABLES ───────────────────────────────────────────── */
   table {
-    font-size: 0.85rem;
-  }
-  pre {
     font-size: 0.8rem;
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.5rem 0;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  thead tr {
+    background: #0a1929 !important;
+  }
+
+  thead th {
+    padding: 8px 14px !important;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #ffffff !important;
+    border: none !important;
+    background: #0a1929 !important;
+  }
+
+  tbody tr:nth-child(odd) {
+    background: #f0f4f8 !important;
+  }
+
+  tbody tr:nth-child(even) {
+    background: #ffffff !important;
+  }
+
+  tbody td {
+    padding: 7px 14px !important;
+    border: none !important;
+    border-bottom: 1px solid #dde4ec !important;
+    color: #0d0d0d;
+    vertical-align: top;
+  }
+
+  tbody tr:last-child td {
+    border-bottom: none !important;
+  }
+
+  /* ── CODE ─────────────────────────────────────────────── */
+  pre {
+    font-size: 0.76rem !important;
+    background: #071624 !important;
+    border-radius: 6px !important;
+    border-left: 4px solid #2e7d32 !important;
+    padding: 0.9rem 1.2rem !important;
+    margin: 0.6rem 0 !important;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace !important;
+  }
+
+  pre code {
+    color: #a8d8b0 !important;
+    background: transparent !important;
+    font-size: 0.76rem !important;
+  }
+
+  :not(pre) > code {
+    background: #e6f2e8 !important;
+    color: #1b5e20 !important;
+    padding: 0.15em 0.45em;
+    border-radius: 3px;
+    font-size: 0.87em;
+  }
+
+  /* ── BLOCKQUOTES ──────────────────────────────────────── */
+  blockquote {
+    border-left: 4px solid #6a1b9a !important;
+    background: #f7f2fc !important;
+    margin: 0.8rem 0 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 0 4px 4px 0;
+  }
+
+  blockquote p {
+    color: #4a148c !important;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ── LISTS ────────────────────────────────────────────── */
+  ul {
+    padding-left: 1.4rem;
+  }
+
+  li {
+    margin-bottom: 0.2rem;
+  }
+
+  ul li::marker {
+    color: #2e7d32;
+  }
+
+  ol li::marker {
+    color: #6a1b9a;
+    font-weight: 600;
+  }
+
+  /* ── INLINE TEXT ──────────────────────────────────────── */
+  strong {
+    color: #0a1929;
+    font-weight: 600;
+  }
+
+  em {
+    color: #4a148c;
+    font-style: italic;
+  }
+
+  /* ── PAGINATION ───────────────────────────────────────── */
+  section::after {
+    color: #2e7d32;
+    font-size: 0.72rem;
+    font-weight: 500;
+  }
+
+  /* ── HORIZONTAL RULE ──────────────────────────────────── */
+  hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(to right, #0a1929, #2e7d32, #6a1b9a);
+    margin: 0.8rem 0;
   }
 ---
 
@@ -152,7 +389,7 @@ npm run test -- --run # Unit + integration tests (Vitest)
 | Rate limiting | Auth, order, and product endpoints |
 | CSRF protection | All mutating API routes |
 | Audit logging | All sensitive operations |
-| Automated Review | Claude GitHub Agent autonomously scan PR's
+| Automated Review | Claude GitHub Agent autonomously scans PRs |
 
 <!--
 Quality gates are non-negotiable. AI can generate code fast — which means it can generate *bad* code fast too. The gates catch issues before they reach production. Our type checker alone catches more bugs than most code reviews.
@@ -192,21 +429,20 @@ Task decomposition is the developer's primary job in AI-assisted workflows. Well
 
 ## Agent Owner Model — Specialized AI for Specialized Work
 
-    Product Owner (Agent Architect)
-| Define Scope | Review Output | Validate Plan | Make Decisions |
-| Explore Agent | Plan Agent | Review Agent | Implement Agent |
-|-------|---------|----------|-------|
-  | "How does X work?"  "Where is Y?" | Break down tasks, weigh options | Validate plan against code rules  | Write code, tests, docs, quality gates |
+**Product Owner (Agent Architect):** Define Scope · Review Output · Validate Plan · Make Decisions
 
+| Agent | Primary Role | Example Tasks |
+|-------|-------------|---------------|
+| **Explore** | Understand the codebase | "How does X work?" · "Where is Y?" |
+| **Plan** | Break down tasks & weigh options | Create TASKs, assess trade-offs |
+| **Review** | Validate plan against code rules | Pre-build review; multi-model for large features |
+| **Implement** | Write code, tests, docs | Execute clear tasks within constraints |
 
 **When to use which:**
-
-| Agent | When |
-|-------|------|
-| **Explore** | Before touching anything, understand first |
-| **Plan** | Any code change must be tracked as a TASK created by Plan Agent |
-| **Review** | Review all TASKs pre-build, larger features reviewed by multiple models |
-| **Implement** | Clear task + constraints defined |
+- **Explore first** — before touching anything, understand it
+- **Plan always** — every code change tracked as a TASK from Plan Agent
+- **Review rigorously** — all TASKs reviewed pre-build; larger features by multiple models
+- **Implement last** — only when task + constraints are clearly defined
 
 <!--
 We don't throw everything at one AI and hope. Specialized agents for exploration, planning, and implementation mirror how senior engineers actually work: understand the codebase, plan the approach, then implement. The explore-first pattern alone prevented dozens of "wrong approach" rewrites.
