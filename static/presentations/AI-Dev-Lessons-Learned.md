@@ -414,6 +414,7 @@ Priority: Critical | Category: Cart/Checkout
 - [ ] Order creation in transaction (Order + OrderItems)
 - [ ] Cart clearing after successful payment
 - [ ] Email confirmation via Resend
+- [ ] Unit Tests for all new features
 
 ### Constraints:
 - Must use prisma.$transaction() for order creation
@@ -429,20 +430,20 @@ Task decomposition is the developer's primary job in AI-assisted workflows. Well
 
 ## Agent Owner Model — Specialized AI for Specialized Work
 
-**Product Owner (Agent Architect):** Define Scope · Review Output · Validate Plan · Make Decisions
+**Product Owner (Agent Architect):** 
 
 | Agent | Primary Role | Example Tasks |
 |-------|-------------|---------------|
 | **Explore** | Understand the codebase | "How does X work?" · "Where is Y?" |
-| **Plan** | Break down tasks & weigh options | Create TASKs, assess trade-offs |
-| **Review** | Validate plan against code rules | Pre-build review; multi-model for large features |
+| **Plan** | Weigh options and breakdown features | Create TASKs, assess trade-offs |
+| **Review** | Validate plan against code rules | Pre-implementation review; multi-model for large features |
 | **Implement** | Write code, tests, docs | Execute clear tasks within constraints |
 
 **When to use which:**
 - **Explore first** — before touching anything, understand it
 - **Plan always** — every code change tracked as a TASK from Plan Agent
 - **Review rigorously** — all TASKs reviewed pre-build; larger features by multiple models
-- **Implement last** — only when task + constraints are clearly defined
+- **Implement last** — only when TASK + constraints are clearly defined
 
 <!--
 We don't throw everything at one AI and hope. Specialized agents for exploration, planning, and implementation mirror how senior engineers actually work: understand the codebase, plan the approach, then implement. The explore-first pattern alone prevented dozens of "wrong approach" rewrites.
