@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ai-dev-lessons-learned",
+    "title": "AI-Assisted Development: From Experiment to Playbook",
+    "filename": "AI-Dev-Lessons-Learned.md",
+    "description": "How I built a production-ready marketplace with AI agents — and what every team can learn from it",
+    "date": "2025-04-03",
+    "slides": 20
+  },
+  {
+    "id": "web-dev-journey",
+    "title": "My Web Dev Journey",
+    "filename": "web-dev-journey.md",
+    "description": "From zero to full-stack — a personal retrospective",
+    "date": "2024-01-15",
+    "slides": 6
+  },
+  {
+    "id": "react-patterns",
+    "title": "React Patterns I Love",
+    "filename": "react-patterns.md",
+    "description": "Favourite patterns and techniques in React development",
+    "date": "2024-03-10",
+    "slides": 6
+  }
+]
