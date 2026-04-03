@@ -12,18 +12,14 @@
 
     :root {
       --green:  #33ff33;
-      --amber:  #ffb000;
-      --cyan:   #00d4ff;
-      --red:    #ff3333;
       --bg:     #0a0a0a;
-      --surface:#111111;
       --border: rgba(51,255,51,0.25);
       --mono:   'JetBrains Mono', 'IBM Plex Mono', monospace;
       --pixel:  'Press Start 2P', monospace;
     }
 
     html, body {
-      height: 100%;
+      min-height: 100%;
       background: var(--bg);
       background-image:
         linear-gradient(rgba(17,17,17,0.8) 1px, transparent 1px),
@@ -35,7 +31,6 @@
       line-height: 1.7;
     }
 
-    /* scanlines */
     body::after {
       content: '';
       position: fixed;
@@ -57,23 +52,15 @@
       padding: 40px 24px 80px;
     }
 
-    /* ── Header ── */
-    header {
-      mb: 40px;
-      margin-bottom: 40px;
-    }
-
     .breadcrumb {
       font-size: 11px;
       color: rgba(51,255,51,0.4);
       margin-bottom: 24px;
     }
-
     .breadcrumb a {
       color: rgba(51,255,51,0.4);
       text-decoration: none;
     }
-
     .breadcrumb a:hover { color: var(--green); }
 
     h1 {
@@ -92,7 +79,6 @@
       margin-bottom: 32px;
     }
 
-    /* ── Column headers ── */
     .col-headers {
       display: grid;
       grid-template-columns: 1fr auto auto;
@@ -105,7 +91,6 @@
       text-transform: uppercase;
     }
 
-    /* ── Presentation row ── */
     .pres-list {
       display: flex;
       flex-direction: column;
@@ -125,7 +110,6 @@
       text-decoration: none;
       transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
     }
-
     .pres-row:hover {
       background: rgba(51,255,51,0.05);
       border-color: rgba(51,255,51,0.5);
@@ -170,7 +154,6 @@
       text-align: right;
     }
 
-    /* ── Footer ── */
     .footer {
       margin-top: 40px;
       padding-top: 20px;
@@ -184,17 +167,29 @@
       gap: 8px;
     }
 
-    /* ── Loading / error states ── */
+    .build-note {
+      margin-top: 32px;
+      padding: 14px 16px;
+      border: 1px solid rgba(51,255,51,0.12);
+      background: rgba(51,255,51,0.02);
+      font-size: 11px;
+      color: rgba(51,255,51,0.35);
+      line-height: 1.8;
+    }
+    .build-note code {
+      color: rgba(51,255,51,0.65);
+      background: rgba(51,255,51,0.07);
+      padding: 1px 5px;
+    }
+
     .state-msg {
       padding: 40px;
       text-align: center;
       color: rgba(51,255,51,0.4);
       font-size: 12px;
     }
+    .state-msg.error { color: #ff5555; }
 
-    .state-msg.error { color: var(--red); }
-
-    /* ── Responsive ── */
     @media (max-width: 600px) {
       .col-headers { display: none; }
       .pres-row { grid-template-columns: auto 1fr; }
@@ -210,7 +205,7 @@
         &nbsp;/&nbsp; presentations
       </div>
       <h1>📊 Presentations</h1>
-      <p class="subtitle">Click any entry to open the slide deck in your browser.</p>
+      <p class="subtitle">Click any entry to open the full slide deck.</p>
     </header>
 
     <div class="col-headers">
@@ -220,18 +215,30 @@
     </div>
 
     <div class="pres-list" id="list">
-      <div class="state-msg" id="loading">Loading presentations&hellip;</div>
+      <div class="state-msg" id="loading">Loading&hellip;</div>
+    </div>
+
+    <div class="build-note">
+      To add a presentation: drop a <code>.md</code> file here, run
+      <code>npx @marp-team/marp-cli@latest *.md</code>, then add an entry to
+      <code>manifest.json</code>.
     </div>
 
     <div class="footer">
       <span id="count"></span>
-      <span>MARP presentations &mdash; cale.xyz</span>
+      <span>Rendered with <a href="https://marp.app" style="color:rgba(51,255,51,0.4);text-decoration:none;" target="_blank" rel="noopener">Marp</a> &mdash; cale.xyz</span>
     </div>
   </div>
 
   <script>
+    function escHtml(s) {
+      return String(s)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
     async function init() {
-      const list = document.getElementById('list');
+      const list    = document.getElementById('list');
       const countEl = document.getElementById('count');
 
       let presentations;
@@ -245,11 +252,11 @@
       }
 
       list.innerHTML = '';
-
       presentations.forEach(p => {
+        const htmlFile = p.filename.replace(/\.md$/i, '.html');
         const a = document.createElement('a');
         a.className = 'pres-row';
-        a.href = `viewer.html?file=${encodeURIComponent(p.filename)}`;
+        a.href = htmlFile;
         a.innerHTML = `
           <span class="pres-icon">📊</span>
           <div class="pres-meta">
@@ -263,14 +270,6 @@
       });
 
       countEl.textContent = `${presentations.length} presentation${presentations.length !== 1 ? 's' : ''}`;
-    }
-
-    function escHtml(s) {
-      return String(s)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
     }
 
     init();
