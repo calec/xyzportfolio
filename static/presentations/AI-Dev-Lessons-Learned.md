@@ -556,9 +556,7 @@ In our project: 49 RLS security policies, CSRF protection, rate limiting, and au
 
 ## Q: What about code ownership and accountability?
 
-The developer who defines the task and reviews the PR owns the code.
-
-AI is a tool — like a compiler or linter.
+Regardless of who triggers the Agent expert Developers are responsible for reviews of PR using the TASK as a review guide.
 
 **The high-value human work is:**
 - Task decomposition (defining *what* to build)
@@ -616,7 +614,7 @@ AI-assisted development effectively levels up the entire team's thinking toward 
 
 | Artifact | Location | Purpose |
 |----------|----------|---------|
-| AI Instruction File | `CLAUDE.md` (693 lines) | Architecture, patterns, constraints, gotchas |
+| AI Instruction File | `CLAUDE.md` | Architecture, patterns, constraints, gotchas, quality gates |
 | Task Board | `kanban.md` | Active work tracking with priorities |
 | Task Archive | `archive.md` (94 tasks) | Historical record of all completed work |
 | Quality Gates | `package.json` scripts | format, lint, type-check, test |
