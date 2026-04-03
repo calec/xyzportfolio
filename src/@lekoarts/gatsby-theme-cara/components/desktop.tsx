@@ -10,6 +10,7 @@ import SkillsWindow from "./skills-window"
 import ContactWindow from "./contact-window"
 import Terminal from "./terminal"
 import StrongBadWindow from "./strongbad-window"
+import PresentationsWindow from "./presentations-window"
 
 const KONAMI = [
   "ArrowUp","ArrowUp","ArrowDown","ArrowDown",
@@ -34,6 +35,7 @@ type WindowAction =
 const ICONS = [
   { id: "about", icon: "📄", label: "README.txt" },
   { id: "projects", icon: "📁", label: "Projects" },
+  { id: "presentations", icon: "📊", label: "Slides" },
   { id: "system", icon: "⚙️", label: "System" },
   { id: "mail", icon: "📧", label: "Mail" },
   { id: "terminal", icon: ">_", label: "Terminal" },
@@ -42,6 +44,7 @@ const ICONS = [
 const WINDOW_META: Record<string, { title: string; icon: string }> = {
   about: { title: "README.txt", icon: "📄" },
   projects: { title: "C:\\Projects", icon: "📁" },
+  presentations: { title: "C:\\Presentations", icon: "📊" },
   system: { title: "System Properties", icon: "⚙️" },
   mail: { title: "New Message", icon: "📧" },
   terminal: { title: "Terminal", icon: ">_" },
@@ -603,6 +606,21 @@ const Desktop = () => {
               onClose={() => handleWindowClose("projects")}
               onMinimize={() => handleWindowMinimize("projects")}
               zIndex={projects.zIndex}
+              soundEnabled={soundEnabled}
+            />
+          </div>
+        )
+      })()}
+
+      {(() => {
+        const presentations = getWin("presentations")
+        return (
+          <div onMouseDown={() => handleWindowFocus("presentations")}>
+            <PresentationsWindow
+              isOpen={presentations.isOpen && !presentations.isMinimized}
+              onClose={() => handleWindowClose("presentations")}
+              onMinimize={() => handleWindowMinimize("presentations")}
+              zIndex={presentations.zIndex}
               soundEnabled={soundEnabled}
             />
           </div>
