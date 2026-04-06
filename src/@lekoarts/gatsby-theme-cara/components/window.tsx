@@ -152,8 +152,8 @@ const Window = ({
       sx={{
         display: "flex",
         flexDirection: "column",
-        border: "1px solid rgba(51, 255, 51, 0.5)",
-        boxShadow: "0 0 20px rgba(51, 255, 51, 0.15), 0 8px 32px rgba(0, 0, 0, 0.8)",
+        border: "1px solid rgba(var(--retro-primary-rgb), 0.5)",
+        boxShadow: "0 0 20px rgba(var(--retro-primary-rgb), 0.15), 0 8px 32px rgba(0, 0, 0, 0.8)",
         fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
         userSelect: "none",
       }}
@@ -170,7 +170,7 @@ const Window = ({
           px: 2,
           py: isMobile ? "10px" : "6px",
           background: "linear-gradient(90deg, #1a1a2e 0%, #0a0a0a 100%)",
-          borderBottom: "1px solid rgba(51, 255, 51, 0.3)",
+          borderBottom: "1px solid rgba(var(--retro-primary-rgb), 0.3)",
           cursor: isDesktop && !isMaximized ? "move" : "default",
           flexShrink: 0,
         }}
@@ -199,11 +199,11 @@ const Window = ({
             sx={{
               fontFamily: '"Press Start 2P", monospace',
               fontSize: isMobile ? "8px" : "9px",
-              color: "#33ff33",
+              color: "var(--retro-primary)",
               whiteSpace: "nowrap",
               overflow: "hidden",
               textOverflow: "ellipsis",
-              textShadow: "0 0 6px rgba(51, 255, 51, 0.6)",
+              textShadow: "0 0 6px rgba(var(--retro-primary-rgb), 0.6)",
             }}
           >
             {title}
@@ -235,8 +235,8 @@ const Window = ({
                 alignItems: "center",
                 justifyContent: "center",
                 background: "transparent",
-                border: "1px solid #33ff33",
-                color: "#33ff33",
+                border: "1px solid var(--retro-primary)",
+                color: "var(--retro-primary)",
                 fontFamily: '"JetBrains Mono", monospace',
                 fontSize: "12px",
                 lineHeight: 1,
@@ -244,8 +244,8 @@ const Window = ({
                 p: 0,
                 transition: "all 0.15s ease",
                 "&:hover": {
-                  background: "rgba(51, 255, 51, 0.15)",
-                  boxShadow: "0 0 6px rgba(51, 255, 51, 0.6)",
+                  background: "rgba(var(--retro-primary-rgb), 0.15)",
+                  boxShadow: "0 0 6px rgba(var(--retro-primary-rgb), 0.6)",
                 },
               }}
             >
@@ -268,8 +268,8 @@ const Window = ({
                 alignItems: "center",
                 justifyContent: "center",
                 background: "transparent",
-                border: "1px solid #33ff33",
-                color: "#33ff33",
+                border: "1px solid var(--retro-primary)",
+                color: "var(--retro-primary)",
                 fontFamily: '"JetBrains Mono", monospace',
                 fontSize: "10px",
                 lineHeight: 1,
@@ -277,8 +277,8 @@ const Window = ({
                 p: 0,
                 transition: "all 0.15s ease",
                 "&:hover": {
-                  background: "rgba(51, 255, 51, 0.15)",
-                  boxShadow: "0 0 6px rgba(51, 255, 51, 0.6)",
+                  background: "rgba(var(--retro-primary-rgb), 0.15)",
+                  boxShadow: "0 0 6px rgba(var(--retro-primary-rgb), 0.6)",
                 },
               }}
             >
@@ -300,8 +300,8 @@ const Window = ({
               alignItems: "center",
               justifyContent: "center",
               background: "transparent",
-              border: "1px solid #33ff33",
-              color: "#33ff33",
+              border: "1px solid var(--retro-primary)",
+              color: "var(--retro-primary)",
               fontFamily: '"JetBrains Mono", monospace',
               fontSize: isMobile ? "18px" : "14px",
               lineHeight: 1,
@@ -332,7 +332,7 @@ const Window = ({
           p: isMobile ? "12px" : "16px",
           overflowY: "auto",
           overflowX: "hidden",
-          color: "#33ff33",
+          color: "var(--retro-primary)",
           fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
           fontSize: isMobile ? "12px" : "13px",
           lineHeight: 1.7,
@@ -343,14 +343,14 @@ const Window = ({
             background: "#0a0a0a",
           },
           "&::-webkit-scrollbar-thumb": {
-            background: "#33ff33",
+            background: "var(--retro-primary)",
             borderRadius: "3px",
             "&:hover": {
-              background: "#55ff55",
+              background: "var(--retro-primary)",
             },
           },
           scrollbarWidth: "thin",
-          scrollbarColor: "#33ff33 #0a0a0a",
+          scrollbarColor: "var(--retro-primary) #0a0a0a",
         }}
       >
         {children}
@@ -363,8 +363,8 @@ const Window = ({
             textAlign: "center",
             py: "4px",
             background: "#111",
-            borderTop: "1px solid rgba(51, 255, 51, 0.1)",
-            color: "rgba(51, 255, 51, 0.4)",
+            borderTop: "1px solid rgba(var(--retro-primary-rgb), 0.1)",
+            color: "rgba(var(--retro-primary-rgb), 0.4)",
             fontSize: "9px",
             fontFamily: '"JetBrains Mono", monospace',
             flexShrink: 0,

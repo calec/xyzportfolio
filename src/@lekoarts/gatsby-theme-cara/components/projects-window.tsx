@@ -78,7 +78,7 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: P
           gap: "8px",
           mb: "16px",
           pb: "12px",
-          borderBottom: "1px solid rgba(51, 255, 51, 0.2)",
+          borderBottom: "1px solid rgba(var(--retro-primary-rgb), 0.2)",
         }}
       >
         <span
@@ -95,12 +95,12 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: P
           sx={{
             flex: 1,
             background: "#0a0a0a",
-            border: "1px solid rgba(51, 255, 51, 0.4)",
+            border: "1px solid rgba(var(--retro-primary-rgb), 0.4)",
             px: "10px",
             py: "4px",
             fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
             fontSize: "12px",
-            color: "#33ff33",
+            color: "var(--retro-primary)",
             letterSpacing: "0.02em",
           }}
         >
@@ -128,7 +128,7 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: P
           px: "8px",
           pb: "6px",
           mb: "4px",
-          borderBottom: "1px solid rgba(51, 255, 51, 0.15)",
+          borderBottom: "1px solid rgba(var(--retro-primary-rgb), 0.15)",
           color: "#888",
           fontSize: "10px",
           fontFamily: '"JetBrains Mono", monospace',
@@ -157,13 +157,13 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: P
               key={project.id}
               sx={{
                 border: isExpanded
-                  ? "1px solid rgba(51, 255, 51, 0.5)"
-                  : "1px solid rgba(51, 255, 51, 0.15)",
-                background: isExpanded ? "rgba(51, 255, 51, 0.04)" : "transparent",
+                  ? "1px solid rgba(var(--retro-primary-rgb), 0.5)"
+                  : "1px solid rgba(var(--retro-primary-rgb), 0.15)",
+                background: isExpanded ? "rgba(var(--retro-primary-rgb), 0.04)" : "transparent",
                 transition: "all 0.2s ease",
                 "&:hover": {
-                  border: "1px solid rgba(51, 255, 51, 0.4)",
-                  background: "rgba(51, 255, 51, 0.03)",
+                  border: "1px solid rgba(var(--retro-primary-rgb), 0.4)",
+                  background: "rgba(var(--retro-primary-rgb), 0.03)",
                 },
               }}
             >
@@ -193,14 +193,14 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: P
                   <span sx={{ fontSize: "14px", flexShrink: 0 }}>📄</span>
                   <span
                     sx={{
-                      color: "#33ff33",
+                      color: "var(--retro-primary)",
                       fontFamily: '"JetBrains Mono", monospace',
                       fontSize: "12px",
                       fontWeight: "bold",
                       whiteSpace: "nowrap",
                       overflow: "hidden",
                       textOverflow: "ellipsis",
-                      textShadow: "0 0 4px rgba(51, 255, 51, 0.4)",
+                      textShadow: "0 0 4px rgba(var(--retro-primary-rgb), 0.4)",
                     }}
                   >
                     {project.filename}
@@ -225,7 +225,7 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: P
                   <span
                     sx={{
                       display: ["block", "block", "none"],
-                      color: "#33ff33",
+                      color: "var(--retro-primary)",
                       fontSize: "10px",
                       fontFamily: '"JetBrains Mono", monospace',
                       transform: isExpanded ? "rotate(90deg)" : "rotate(0deg)",
@@ -269,7 +269,7 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: P
                   </span>
                   <span
                     sx={{
-                      color: "#33ff33",
+                      color: "var(--retro-primary)",
                       fontSize: "10px",
                       fontFamily: '"JetBrains Mono", monospace',
                       transform: isExpanded ? "rotate(90deg)" : "rotate(0deg)",
@@ -289,7 +289,7 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: P
                     px: "16px",
                     pb: "14px",
                     pt: "4px",
-                    borderTop: "1px solid rgba(51, 255, 51, 0.15)",
+                    borderTop: "1px solid rgba(var(--retro-primary-rgb), 0.15)",
                   }}
                 >
                   {/* Description */}
@@ -321,8 +321,8 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: P
                         sx={{
                           fontFamily: '"JetBrains Mono", monospace',
                           fontSize: "10px",
-                          color: "#33ff33",
-                          border: "1px solid #33ff33",
+                          color: "var(--retro-primary)",
+                          border: "1px solid var(--retro-primary)",
                           px: "6px",
                           py: "2px",
                           letterSpacing: "0.04em",
@@ -377,14 +377,14 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: P
                         target="_blank"
                         rel="noopener noreferrer"
                         sx={{
-                          color: "#33ff33",
+                          color: "var(--retro-primary)",
                           fontFamily: '"JetBrains Mono", monospace',
                           fontSize: "11px",
                           textDecoration: "none",
                           letterSpacing: "0.04em",
                           "&:hover": {
                             textDecoration: "underline",
-                            textShadow: "0 0 6px rgba(51, 255, 51, 0.6)",
+                            textShadow: "0 0 6px rgba(var(--retro-primary-rgb), 0.6)",
                           },
                         }}
                       >
@@ -397,14 +397,14 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: P
                         target="_blank"
                         rel="noopener noreferrer"
                         sx={{
-                          color: "#33ff33",
+                          color: "var(--retro-primary)",
                           fontFamily: '"JetBrains Mono", monospace',
                           fontSize: "11px",
                           textDecoration: "none",
                           letterSpacing: "0.04em",
                           "&:hover": {
                             textDecoration: "underline",
-                            textShadow: "0 0 6px rgba(51, 255, 51, 0.6)",
+                            textShadow: "0 0 6px rgba(var(--retro-primary-rgb), 0.6)",
                           },
                         }}
                       >
@@ -424,7 +424,7 @@ const ProjectsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: P
         sx={{
           mt: "16px",
           pt: "10px",
-          borderTop: "1px solid rgba(51, 255, 51, 0.2)",
+          borderTop: "1px solid rgba(var(--retro-primary-rgb), 0.2)",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",

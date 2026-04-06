@@ -90,9 +90,9 @@ const SkillsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Ski
           {/* Username header */}
           <div
             sx={{
-              color: "#33ff33",
+              color: "var(--retro-primary)",
               fontWeight: "bold",
-              textShadow: "0 0 8px rgba(51, 255, 51, 0.8), 0 0 16px rgba(51, 255, 51, 0.4)",
+              textShadow: "0 0 8px rgba(var(--retro-primary-rgb), 0.8), 0 0 16px rgba(var(--retro-primary-rgb), 0.4)",
               fontSize: "13px",
               mb: "2px",
             }}
@@ -106,7 +106,7 @@ const SkillsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Ski
                 <div
                   key={`sep-${i}`}
                   sx={{
-                    color: "#33ff33",
+                    color: "var(--retro-primary)",
                     my: "2px",
                     opacity: 0.7,
                   }}
@@ -127,7 +127,7 @@ const SkillsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Ski
               >
                 <span
                   sx={{
-                    color: "#ffb000",
+                    color: "var(--retro-secondary)",
                     minWidth: "90px",
                     flexShrink: 0,
                   }}
@@ -136,7 +136,7 @@ const SkillsWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Ski
                 </span>
                 <span
                   sx={{
-                    color: "#33ff33",
+                    color: "var(--retro-primary)",
                   }}
                 >
                   {row.value}

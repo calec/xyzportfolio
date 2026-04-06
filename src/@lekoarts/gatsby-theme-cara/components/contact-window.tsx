@@ -18,10 +18,10 @@ const inputSx = {
   background: "transparent",
   border: "none",
   outline: "none",
-  color: "#33ff33",
+  color: "var(--retro-primary)",
   fontSize: "12px",
   fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
-  textShadow: "0 0 6px rgba(51, 255, 51, 0.4)",
+  textShadow: "0 0 6px rgba(var(--retro-primary-rgb), 0.4)",
   "::placeholder": {
     color: "#555",
   },
@@ -96,10 +96,10 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
         >
           <div
             sx={{
-              color: "#33ff33",
+              color: "var(--retro-primary)",
               fontSize: "14px",
               textAlign: "center",
-              textShadow: "0 0 8px rgba(51, 255, 51, 0.6)",
+              textShadow: "0 0 8px rgba(var(--retro-primary-rgb), 0.6)",
             }}
           >
             {">"} MESSAGE TRANSMITTED SUCCESSFULLY
@@ -110,9 +110,9 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
           <button
             onClick={() => setFormState("idle")}
             sx={{
-              border: "1px solid #33ff33",
+              border: "1px solid var(--retro-primary)",
               background: "transparent",
-              color: "#33ff33",
+              color: "var(--retro-primary)",
               padding: "8px 20px",
               fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
               fontSize: "12px",
@@ -120,8 +120,8 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
               transition: "all 0.2s ease",
               letterSpacing: "0.05em",
               "&:hover": {
-                background: "rgba(51, 255, 51, 0.1)",
-                boxShadow: "0 0 10px rgba(51, 255, 51, 0.4)",
+                background: "rgba(var(--retro-primary-rgb), 0.1)",
+                boxShadow: "0 0 10px rgba(var(--retro-primary-rgb), 0.4)",
               },
             }}
           >
@@ -155,7 +155,7 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
         {/* Email Header Fields */}
         <div
           sx={{
-            border: "1px solid rgba(51, 255, 51, 0.3)",
+            border: "1px solid rgba(var(--retro-primary-rgb), 0.3)",
             background: "#0d0d0d",
           }}
         >
@@ -166,7 +166,7 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
               alignItems: "center",
               px: "10px",
               py: "6px",
-              borderBottom: "1px solid rgba(51, 255, 51, 0.15)",
+              borderBottom: "1px solid rgba(var(--retro-primary-rgb), 0.15)",
             }}
           >
             <span sx={{ color: "#888", fontSize: "11px", minWidth: "70px", flexShrink: 0 }}>
@@ -190,7 +190,7 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
               alignItems: "center",
               px: "10px",
               py: "6px",
-              borderBottom: "1px solid rgba(51, 255, 51, 0.15)",
+              borderBottom: "1px solid rgba(var(--retro-primary-rgb), 0.15)",
             }}
           >
             <span sx={{ color: "#888", fontSize: "11px", minWidth: "70px", flexShrink: 0 }}>
@@ -198,9 +198,9 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
             </span>
             <span
               sx={{
-                color: "#33ff33",
+                color: "var(--retro-primary)",
                 fontSize: "12px",
-                textShadow: "0 0 6px rgba(51, 255, 51, 0.4)",
+                textShadow: "0 0 6px rgba(var(--retro-primary-rgb), 0.4)",
               }}
             >
               cale@cale.xyz
@@ -214,7 +214,7 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
               alignItems: "center",
               px: "10px",
               py: "6px",
-              borderBottom: "1px solid rgba(51, 255, 51, 0.15)",
+              borderBottom: "1px solid rgba(var(--retro-primary-rgb), 0.15)",
             }}
           >
             <span sx={{ color: "#888", fontSize: "11px", minWidth: "70px", flexShrink: 0 }}>
@@ -259,7 +259,7 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
           sx={{
             flex: 1,
             background: "#050505",
-            border: "1px solid rgba(51, 255, 51, 0.2)",
+            border: "1px solid rgba(var(--retro-primary-rgb), 0.2)",
             padding: "12px",
             display: "flex",
             flexDirection: "column",
@@ -277,12 +277,12 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
               background: "transparent",
               border: "none",
               outline: "none",
-              color: "#33ff33",
+              color: "var(--retro-primary)",
               fontSize: "12px",
               fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
               resize: "none",
               width: "100%",
-              textShadow: "0 0 6px rgba(51, 255, 51, 0.3)",
+              textShadow: "0 0 6px rgba(var(--retro-primary-rgb), 0.3)",
               "::placeholder": { color: "#555" },
             }}
           />
@@ -302,7 +302,7 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
         )}
 
         {/* Quick Connect Section */}
-        <div sx={{ borderTop: "1px solid rgba(51, 255, 51, 0.2)", pt: "10px" }}>
+        <div sx={{ borderTop: "1px solid rgba(var(--retro-primary-rgb), 0.2)", pt: "10px" }}>
           <div
             sx={{
               color: "#ffb000",
@@ -319,7 +319,7 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
               target="_blank"
               rel="noopener noreferrer"
               sx={{
-                color: "#33ff33",
+                color: "var(--retro-primary)",
                 fontSize: "12px",
                 textDecoration: "none",
                 cursor: "pointer",
@@ -327,7 +327,7 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
                 transition: "all 0.2s ease",
                 "&:hover": {
                   textDecoration: "underline",
-                  textShadow: "0 0 8px rgba(51, 255, 51, 0.7)",
+                  textShadow: "0 0 8px rgba(var(--retro-primary-rgb), 0.7)",
                 },
               }}
             >
@@ -338,7 +338,7 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
               target="_blank"
               rel="noopener noreferrer"
               sx={{
-                color: "#33ff33",
+                color: "var(--retro-primary)",
                 fontSize: "12px",
                 textDecoration: "none",
                 cursor: "pointer",
@@ -346,7 +346,7 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
                 transition: "all 0.2s ease",
                 "&:hover": {
                   textDecoration: "underline",
-                  textShadow: "0 0 8px rgba(51, 255, 51, 0.7)",
+                  textShadow: "0 0 8px rgba(var(--retro-primary-rgb), 0.7)",
                 },
               }}
             >
@@ -361,9 +361,9 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
             type="submit"
             disabled={formState === "submitting"}
             sx={{
-              border: "1px solid #33ff33",
+              border: "1px solid var(--retro-primary)",
               background: "transparent",
-              color: "#33ff33",
+              color: "var(--retro-primary)",
               padding: "8px 20px",
               fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
               fontSize: "12px",
@@ -372,9 +372,9 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
               letterSpacing: "0.05em",
               opacity: formState === "submitting" ? 0.6 : 1,
               "&:hover": {
-                background: formState !== "submitting" ? "rgba(51, 255, 51, 0.1)" : undefined,
+                background: formState !== "submitting" ? "rgba(var(--retro-primary-rgb), 0.1)" : undefined,
                 boxShadow:
-                  formState !== "submitting" ? "0 0 10px rgba(51, 255, 51, 0.4)" : undefined,
+                  formState !== "submitting" ? "0 0 10px rgba(var(--retro-primary-rgb), 0.4)" : undefined,
               },
             }}
           >
