@@ -195,7 +195,7 @@ const Desktop = () => {
 
   const handleViewSource = useCallback(() => {
     setContextMenu(null)
-    window.open("https://github.com/calecorwin", "_blank", "noopener,noreferrer")
+    window.open("https://github.com/calec/xyzportfolio", "_blank", "noopener,noreferrer")
   }, [])
 
   const handleAboutOS = useCallback(() => {
@@ -280,6 +280,12 @@ const Desktop = () => {
       onContextMenu={handleContextMenu}
     >
       <style>{`
+        :root {
+          --retro-primary: ${colorMode === 'amber' ? '#ffb000' : '#33ff33'};
+          --retro-primary-rgb: ${colorMode === 'amber' ? '255, 176, 0' : '51, 255, 51'};
+          --retro-secondary: ${colorMode === 'amber' ? '#33ff33' : '#ffb000'};
+          --retro-secondary-rgb: ${colorMode === 'amber' ? '51, 255, 51' : '255, 176, 0'};
+        }
         @keyframes konamiInvert {
           0%   { filter: invert(1) hue-rotate(180deg) saturate(2); }
           40%  { filter: invert(0.6) hue-rotate(90deg); }
@@ -302,7 +308,7 @@ const Desktop = () => {
             position: "fixed",
             inset: 0,
             zIndex: 9998,
-            background: "rgba(51,255,51,0.05)",
+            background: "rgba(var(--retro-primary-rgb),0.05)",
             pointerEvents: "none",
           }}
         />
@@ -319,15 +325,15 @@ const Desktop = () => {
             zIndex: 9999,
             fontFamily: '"Press Start 2P", monospace',
             fontSize: ["12px", "18px", "24px"],
-            color: "#33ff33",
-            textShadow: "0 0 20px #33ff33, 0 0 40px #33ff33",
+            color: "var(--retro-primary)",
+            textShadow: "0 0 20px var(--retro-primary), 0 0 40px var(--retro-primary)",
             textAlign: "center",
             pointerEvents: "none",
             lineHeight: 2,
           }}
         >
           CHEAT CODE ACTIVATED!<br />
-          <span sx={{ fontSize: "0.6em", color: "#ffb000", textShadow: "0 0 10px #ffb000" }}>
+          <span sx={{ fontSize: "0.6em", color: "var(--retro-secondary)", textShadow: "0 0 10px var(--retro-secondary)" }}>
             +30 STYLE POINTS
           </span>
         </div>
@@ -342,9 +348,9 @@ const Desktop = () => {
             top: Math.min(contextMenu.y, (typeof window !== "undefined" ? window.innerHeight : 600) - 220),
             zIndex: 9997,
             background: "#111",
-            border: "1px solid rgba(51,255,51,0.5)",
+            border: "1px solid rgba(var(--retro-primary-rgb),0.5)",
             minWidth: "190px",
-            boxShadow: "0 0 20px rgba(51,255,51,0.2), 0 4px 16px rgba(0,0,0,0.8)",
+            boxShadow: "0 0 20px rgba(var(--retro-primary-rgb),0.2), 0 4px 16px rgba(0,0,0,0.8)",
             fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
             fontSize: "12px",
           }}
@@ -367,16 +373,16 @@ const Desktop = () => {
                 py: "8px",
                 background: "transparent",
                 border: "none",
-                borderBottom: i < arr.length - 1 ? "1px solid rgba(51,255,51,0.15)" : "none",
-                color: "#33ff33",
+                borderBottom: i < arr.length - 1 ? "1px solid rgba(var(--retro-primary-rgb),0.15)" : "none",
+                color: "var(--retro-primary)",
                 fontFamily: "inherit",
                 fontSize: "inherit",
                 textAlign: "left",
                 cursor: "pointer",
                 transition: "background 0.1s",
                 "&:hover": {
-                  background: "rgba(51,255,51,0.12)",
-                  textShadow: "0 0 6px rgba(51,255,51,0.6)",
+                  background: "rgba(var(--retro-primary-rgb),0.12)",
+                  textShadow: "0 0 6px rgba(var(--retro-primary-rgb),0.6)",
                 },
               }}
             >
@@ -403,8 +409,8 @@ const Desktop = () => {
           <div
             sx={{
               background: "#111",
-              border: "1px solid rgba(51,255,51,0.6)",
-              boxShadow: "0 0 30px rgba(51,255,51,0.2)",
+              border: "1px solid rgba(var(--retro-primary-rgb),0.6)",
+              boxShadow: "0 0 30px rgba(var(--retro-primary-rgb),0.2)",
               width: ["90%", "400px"],
               fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
               fontSize: "12px",
@@ -412,24 +418,24 @@ const Desktop = () => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Title bar */}
-            <div sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", px: 2, py: "6px", background: "linear-gradient(90deg,#1a1a2e,#0a0a0a)", borderBottom: "1px solid rgba(51,255,51,0.3)" }}>
-              <span sx={{ fontFamily: '"Press Start 2P", monospace', fontSize: "9px", color: "#33ff33" }}>
+            <div sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", px: 2, py: "6px", background: "linear-gradient(90deg,#1a1a2e,#0a0a0a)", borderBottom: "1px solid rgba(var(--retro-primary-rgb),0.3)" }}>
+              <span sx={{ fontFamily: '"Press Start 2P", monospace', fontSize: "9px", color: "var(--retro-primary)" }}>
                 ℹ️ About C4L3 OS
               </span>
               <button
                 onClick={() => setShowAboutDialog(false)}
-                sx={{ background: "transparent", border: "1px solid #33ff33", color: "#33ff33", width: "18px", height: "18px", cursor: "pointer", fontSize: "14px", lineHeight: 1, p: 0, display: "flex", alignItems: "center", justifyContent: "center", "&:hover": { background: "rgba(255,51,51,0.2)", borderColor: "#ff3333", color: "#ff3333" } }}
+                sx={{ background: "transparent", border: "1px solid var(--retro-primary)", color: "var(--retro-primary)", width: "18px", height: "18px", cursor: "pointer", fontSize: "14px", lineHeight: 1, p: 0, display: "flex", alignItems: "center", justifyContent: "center", "&:hover": { background: "rgba(255,51,51,0.2)", borderColor: "#ff3333", color: "#ff3333" } }}
               >×</button>
             </div>
             {/* Body */}
-            <div sx={{ p: "20px", color: "#33ff33", lineHeight: 1.8 }}>
-              <div sx={{ fontFamily: '"Press Start 2P", monospace', fontSize: "11px", mb: 3, textShadow: "0 0 8px rgba(51,255,51,0.6)" }}>
+            <div sx={{ p: "20px", color: "var(--retro-primary)", lineHeight: 1.8 }}>
+              <div sx={{ fontFamily: '"Press Start 2P", monospace', fontSize: "11px", mb: 3, textShadow: "0 0 8px rgba(var(--retro-primary-rgb),0.6)" }}>
                 C4L3 OS v2.0
               </div>
-              <div sx={{ color: "#aaa", mb: 1 }}>Built by: <span sx={{ color: "#33ff33" }}>Cale Corwin</span></div>
-              <div sx={{ color: "#aaa", mb: 1 }}>Stack: <span sx={{ color: "#33ff33" }}>React + Gatsby + TypeScript</span></div>
-              <div sx={{ color: "#aaa", mb: 1 }}>Theme: <span sx={{ color: "#33ff33" }}>Retro Terminal OS</span></div>
-              <div sx={{ color: "#aaa", mb: 3 }}>Year: <span sx={{ color: "#33ff33" }}>{new Date().getFullYear()}</span></div>
+              <div sx={{ color: "#aaa", mb: 1 }}>Built by: <span sx={{ color: "var(--retro-primary)" }}>Cale Corwin</span></div>
+              <div sx={{ color: "#aaa", mb: 1 }}>Stack: <span sx={{ color: "var(--retro-primary)" }}>React + Gatsby + TypeScript</span></div>
+              <div sx={{ color: "#aaa", mb: 1 }}>Theme: <span sx={{ color: "var(--retro-primary)" }}>Retro Terminal OS</span></div>
+              <div sx={{ color: "#aaa", mb: 3 }}>Year: <span sx={{ color: "var(--retro-primary)" }}>{new Date().getFullYear()}</span></div>
               <div sx={{ color: "#555", fontSize: "11px" }}>
                 Try: ↑↑↓↓←→←→BA
               </div>
@@ -459,8 +465,8 @@ const Desktop = () => {
             sx={{
               fontFamily: '"Press Start 2P", monospace',
               fontSize: "10px",
-              color: "#33ff33",
-              textShadow: "0 0 8px rgba(51, 255, 51, 0.8)",
+              color: "var(--retro-primary)",
+              textShadow: "0 0 8px rgba(var(--retro-primary-rgb), 0.8)",
               mb: "12px",
               textAlign: "center",
               letterSpacing: "0.1em",
@@ -479,18 +485,18 @@ const Desktop = () => {
                 width: "100%",
                 px: "16px",
                 py: "14px",
-                background: "rgba(51, 255, 51, 0.04)",
-                border: "1px solid rgba(51, 255, 51, 0.25)",
-                color: "#33ff33",
+                background: "rgba(var(--retro-primary-rgb), 0.04)",
+                border: "1px solid rgba(var(--retro-primary-rgb), 0.25)",
+                color: "var(--retro-primary)",
                 fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
                 fontSize: "13px",
                 cursor: "pointer",
                 textAlign: "left",
                 transition: "all 0.15s ease",
                 "&:hover, &:active": {
-                  background: "rgba(51, 255, 51, 0.1)",
-                  border: "1px solid rgba(51, 255, 51, 0.6)",
-                  boxShadow: "0 0 8px rgba(51, 255, 51, 0.2)",
+                  background: "rgba(var(--retro-primary-rgb), 0.1)",
+                  border: "1px solid rgba(var(--retro-primary-rgb), 0.6)",
+                  boxShadow: "0 0 8px rgba(var(--retro-primary-rgb), 0.2)",
                 },
               }}
             >
@@ -499,7 +505,7 @@ const Desktop = () => {
                 sx={{
                   fontFamily: '"Press Start 2P", monospace',
                   fontSize: "9px",
-                  textShadow: "0 0 6px rgba(51, 255, 51, 0.6)",
+                  textShadow: "0 0 6px rgba(var(--retro-primary-rgb), 0.6)",
                   letterSpacing: "0.05em",
                 }}
               >
@@ -508,7 +514,7 @@ const Desktop = () => {
               <span
                 sx={{
                   ml: "auto",
-                  color: "rgba(51, 255, 51, 0.4)",
+                  color: "rgba(var(--retro-primary-rgb), 0.4)",
                   fontSize: "12px",
                   flexShrink: 0,
                 }}

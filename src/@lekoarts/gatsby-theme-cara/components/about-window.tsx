@@ -132,8 +132,8 @@ const AboutWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Abou
               fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
               fontSize: "11px",
               lineHeight: 1.3,
-              color: "#33ff33",
-              textShadow: "0 0 8px rgba(51, 255, 51, 0.7)",
+              color: "var(--retro-primary)",
+              textShadow: "0 0 8px rgba(var(--retro-primary-rgb), 0.7)",
               whiteSpace: "pre",
               letterSpacing: "0.02em",
             }}
@@ -146,7 +146,7 @@ const AboutWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Abou
       {/* Divider after banner */}
       <div
         sx={{
-          borderTop: "1px solid rgba(51, 255, 51, 0.25)",
+          borderTop: "1px solid rgba(var(--retro-primary-rgb), 0.25)",
           mb: 2,
         }}
       />
@@ -181,7 +181,7 @@ const AboutWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Abou
                 alignItems: "baseline",
                 gap: "12px",
                 "&:hover": {
-                  background: "rgba(51, 255, 51, 0.04)",
+                  background: "rgba(var(--retro-primary-rgb), 0.04)",
                 },
               }}
             >
@@ -205,21 +205,21 @@ const AboutWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Abou
               <span
                 sx={{
                   color: isSection
-                    ? "rgba(51, 255, 51, 0.35)"
+                    ? "rgba(var(--retro-primary-rgb), 0.35)"
                     : isHeader
                     ? "#55ffaa"
                     : line.trim().startsWith("►")
-                    ? "#33ff33"
+                    ? "var(--retro-primary)"
                     : line.trim().startsWith("[")
-                    ? "rgba(51, 255, 51, 0.5)"
+                    ? "rgba(var(--retro-primary-rgb), 0.5)"
                     : line.includes(":")
-                    ? "#33ff33"
-                    : "#33ff33",
+                    ? "var(--retro-primary)"
+                    : "var(--retro-primary)",
                   textShadow: isSection
                     ? "none"
                     : isHeader
                     ? "0 0 8px rgba(85, 255, 170, 0.5)"
-                    : "0 0 4px rgba(51, 255, 51, 0.25)",
+                    : "0 0 4px rgba(var(--retro-primary-rgb), 0.25)",
                   whiteSpace: "pre",
                   fontWeight: isHeader ? 700 : 400,
                   lineHeight: 1.75,
@@ -257,10 +257,10 @@ const AboutWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Abou
           <span
             className="retro-cursor"
             sx={{
-              color: "#33ff33",
+              color: "var(--retro-primary)",
               fontSize: "13px",
               lineHeight: 1.75,
-              textShadow: "0 0 8px rgba(51, 255, 51, 0.9)",
+              textShadow: "0 0 8px rgba(var(--retro-primary-rgb), 0.9)",
               userSelect: "none",
             }}
           >

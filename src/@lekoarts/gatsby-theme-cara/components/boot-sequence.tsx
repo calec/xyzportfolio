@@ -128,7 +128,7 @@ const BootSequence = ({ onComplete }: BootSequenceProps) => {
         p: [3, 4, 5],
         fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
         fontSize: ["12px", "13px", "14px"],
-        color: "#33ff33",
+        color: "var(--retro-primary)",
         cursor: "default",
       }}
     >
@@ -150,9 +150,9 @@ const BootSequence = ({ onComplete }: BootSequenceProps) => {
               color: line.includes("[CRITICAL]")
                 ? "#ff3333"
                 : line.startsWith(">")
-                ? "#33ff33"
+                ? "var(--retro-primary)"
                 : line.includes("[OK]")
-                ? "#33ff33"
+                ? "var(--retro-primary)"
                 : "#aaffaa",
               textShadow: "0 0 8px currentColor",
             }}
@@ -164,7 +164,7 @@ const BootSequence = ({ onComplete }: BootSequenceProps) => {
                   display: "inline-block",
                   width: "0.6em",
                   height: "1em",
-                  bg: "#33ff33",
+                  bg: "var(--retro-primary)",
                   ml: "1px",
                   verticalAlign: "text-bottom",
                   animation: "blink 1s step-end infinite",

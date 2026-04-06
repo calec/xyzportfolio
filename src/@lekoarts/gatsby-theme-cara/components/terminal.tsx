@@ -49,7 +49,7 @@ const COMMANDS: Record<string, { lines: string[]; color?: string; opensWindow?: 
       "  sbemail     Check your email (Compy 386)",
       "  fhqwhgads   ???",
     ],
-    color: "#33ff33",
+    color: "var(--retro-primary)",
   },
   about: {
     lines: [
@@ -63,7 +63,7 @@ const COMMANDS: Record<string, { lines: string[]; color?: string; opensWindow?: 
       "",
       "[Window: README.txt opened]",
     ],
-    color: "#33ff33",
+    color: "var(--retro-primary)",
     opensWindow: "about",
   },
   projects: {
@@ -78,7 +78,7 @@ const COMMANDS: Record<string, { lines: string[]; color?: string; opensWindow?: 
       "",
       "[Window: C:\\Projects opened]",
     ],
-    color: "#33ff33",
+    color: "var(--retro-primary)",
     opensWindow: "projects",
   },
   skills: {
@@ -97,7 +97,7 @@ const COMMANDS: Record<string, { lines: string[]; color?: string; opensWindow?: 
       "",
       "[Window: System Properties opened]",
     ],
-    color: "#33ff33",
+    color: "var(--retro-primary)",
     opensWindow: "system",
   },
   contact: {
@@ -112,20 +112,20 @@ const COMMANDS: Record<string, { lines: string[]; color?: string; opensWindow?: 
       "",
       "[Window: New Message opened]",
     ],
-    color: "#33ff33",
+    color: "var(--retro-primary)",
     opensWindow: "mail",
   },
   whoami: {
     lines: ["cale — developer, builder, problem solver"],
-    color: "#33ff33",
+    color: "var(--retro-primary)",
   },
   pwd: {
     lines: ["/home/cale/portfolio"],
-    color: "#33ff33",
+    color: "var(--retro-primary)",
   },
   ls: {
     lines: ["README.txt  Projects/  system.conf  mail/"],
-    color: "#33ff33",
+    color: "var(--retro-primary)",
   },
   "sudo hire cale": {
     lines: [
@@ -330,7 +330,7 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow, soundEnab
     function draw() {
       ctx.fillStyle = "rgba(0, 0, 0, 0.05)"
       ctx.fillRect(0, 0, canvas.width, canvas.height)
-      ctx.fillStyle = "#33ff33"
+      ctx.fillStyle = "var(--retro-primary)"
       ctx.font = `${fontSize}px JetBrains Mono, monospace`
 
       for (let i = 0; i < drops.length; i++) {
@@ -383,7 +383,7 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow, soundEnab
       const inputLineId = nextId()
       setOutputLines(prev => [
         ...prev,
-        { id: inputLineId, text: `cale@portfolio:~$ ${trimmed}`, color: "#33ff33" },
+        { id: inputLineId, text: `cale@portfolio:~$ ${trimmed}`, color: "var(--retro-primary)" },
       ])
 
       if (cmd === "clear") {
@@ -394,12 +394,12 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow, soundEnab
       }
 
       if (cmd.startsWith("echo ")) {
-        enqueueLines([rawCmd.slice(5), ""], "#33ff33")
+        enqueueLines([rawCmd.slice(5), ""], "var(--retro-primary)")
         return
       }
 
       if (cmd === "date") {
-        enqueueLines([new Date().toString(), ""], "#33ff33")
+        enqueueLines([new Date().toString(), ""], "var(--retro-primary)")
         return
       }
 
@@ -515,7 +515,7 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow, soundEnab
             "&::-webkit-scrollbar": { width: "4px" },
             "&::-webkit-scrollbar-track": { background: "transparent" },
             "&::-webkit-scrollbar-thumb": {
-              background: "rgba(51, 255, 51, 0.5)",
+              background: "rgba(var(--retro-primary-rgb), 0.5)",
               borderRadius: "2px",
             },
           }}
@@ -524,7 +524,7 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow, soundEnab
             <div
               key={line.id}
               sx={{
-                color: line.color ?? "#33ff33",
+                color: line.color ?? "var(--retro-primary)",
                 lineHeight: 1.6,
                 whiteSpace: "pre-wrap",
                 wordBreak: "break-word",
@@ -541,7 +541,7 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow, soundEnab
           sx={{
             display: "flex",
             alignItems: "center",
-            borderTop: "1px solid rgba(51, 255, 51, 0.2)",
+            borderTop: "1px solid rgba(var(--retro-primary-rgb), 0.2)",
             pt: "6px",
             mt: "4px",
             flexShrink: 0,
@@ -550,10 +550,10 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow, soundEnab
           {/* Prompt */}
           <span
             sx={{
-              color: "#33ff33",
+              color: "var(--retro-primary)",
               userSelect: "none",
               flexShrink: 0,
-              textShadow: "0 0 6px rgba(51, 255, 51, 0.5)",
+              textShadow: "0 0 6px rgba(var(--retro-primary-rgb), 0.5)",
               whiteSpace: "nowrap",
             }}
           >
@@ -596,7 +596,7 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow, soundEnab
             />
             <span
               sx={{
-                color: "#33ff33",
+                color: "var(--retro-primary)",
                 whiteSpace: "pre",
                 pointerEvents: "none",
                 lineHeight: 1.6,
@@ -607,8 +607,8 @@ const Terminal = ({ isOpen, onClose, onMinimize, zIndex, onOpenWindow, soundEnab
             <span
               className="term-cursor"
               sx={{
-                color: "#33ff33",
-                textShadow: "0 0 8px rgba(51, 255, 51, 0.9)",
+                color: "var(--retro-primary)",
+                textShadow: "0 0 8px rgba(var(--retro-primary-rgb), 0.9)",
                 userSelect: "none",
                 pointerEvents: "none",
                 lineHeight: 1.6,

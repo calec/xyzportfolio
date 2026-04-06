@@ -62,13 +62,13 @@ const DesktopIcon = ({ id, icon, label, isSelected, onSelect, onOpen }: DesktopI
         width: "72px",
         p: "6px",
         cursor: "pointer",
-        border: isSelected ? "1px dashed rgba(51, 255, 51, 0.6)" : "1px solid transparent",
-        background: isSelected ? "rgba(51, 255, 51, 0.08)" : "transparent",
+        border: isSelected ? "1px dashed rgba(var(--retro-primary-rgb), 0.6)" : "1px solid transparent",
+        background: isSelected ? "rgba(var(--retro-primary-rgb), 0.08)" : "transparent",
         borderRadius: "2px",
         transition: "all 0.15s ease",
         "&:hover": {
-          background: "rgba(51, 255, 51, 0.06)",
-          border: "1px dashed rgba(51, 255, 51, 0.4)",
+          background: "rgba(var(--retro-primary-rgb), 0.06)",
+          border: "1px dashed rgba(var(--retro-primary-rgb), 0.4)",
         },
         userSelect: "none",
       }}
@@ -79,7 +79,7 @@ const DesktopIcon = ({ id, icon, label, isSelected, onSelect, onOpen }: DesktopI
           lineHeight: 1,
           display: "block",
           textAlign: "center",
-          filter: isSelected ? "drop-shadow(0 0 8px rgba(51, 255, 51, 0.7))" : "none",
+          filter: isSelected ? "drop-shadow(0 0 8px rgba(var(--retro-primary-rgb), 0.7))" : "none",
         }}
       >
         {icon}
@@ -88,9 +88,9 @@ const DesktopIcon = ({ id, icon, label, isSelected, onSelect, onOpen }: DesktopI
         sx={{
           fontFamily: '"Press Start 2P", monospace',
           fontSize: "8px",
-          color: "#33ff33",
+          color: "var(--retro-primary)",
           textAlign: "center",
-          textShadow: "0 0 6px rgba(51, 255, 51, 0.8)",
+          textShadow: "0 0 6px rgba(var(--retro-primary-rgb), 0.8)",
           lineHeight: 1.4,
           wordBreak: "break-word",
           width: "100%",
