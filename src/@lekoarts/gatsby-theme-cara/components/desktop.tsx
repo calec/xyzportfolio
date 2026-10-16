@@ -220,8 +220,12 @@ const Desktop = () => {
 
   const handleOSButtonClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
+    // React 16 delegates events to document, so stopPropagation alone doesn't
+    // stop the document-level "close menu" listener from firing right after
+    e.nativeEvent.stopImmediatePropagation()
     const rect = e.currentTarget.getBoundingClientRect()
-    setContextMenu({ x: rect.left, y: rect.top })
+    // Open upward from the taskbar button (menu is ~170px tall)
+    setContextMenu(prev => (prev ? null : { x: rect.left, y: rect.top - 172 }))
   }, [])
 
   const handleIconSelect = useCallback((id: string) => {
@@ -349,8 +353,9 @@ const Desktop = () => {
         <div
           sx={{
             position: "fixed",
-            left: Math.min(contextMenu.x, (typeof window !== "undefined" ? window.innerWidth : 800) - 200),
-            top: Math.min(contextMenu.y, (typeof window !== "undefined" ? window.innerHeight : 600) - 220),
+            // px strings: theme-ui maps small bare numbers onto the space scale
+            left: `${Math.max(0, Math.min(contextMenu.x, (typeof window !== "undefined" ? window.innerWidth : 800) - 200))}px`,
+            top: `${Math.max(0, Math.min(contextMenu.y, (typeof window !== "undefined" ? window.innerHeight : 600) - 220))}px`,
             zIndex: 9997,
             background: "#111",
             border: "1px solid rgba(var(--retro-primary-rgb),0.5)",
