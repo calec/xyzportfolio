@@ -59,7 +59,7 @@ const DesktopIcon = ({ id, icon, label, isSelected, onSelect, onOpen }: DesktopI
         flexDirection: "column",
         alignItems: "center",
         gap: "6px",
-        width: "72px",
+        width: "100px",
         p: "6px",
         cursor: "pointer",
         border: isSelected ? "1px dashed rgba(var(--retro-primary-rgb), 0.6)" : "1px solid transparent",

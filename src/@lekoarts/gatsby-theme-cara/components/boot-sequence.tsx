@@ -25,8 +25,8 @@ const BOOT_LINES = [
   "> Type 'help' for available commands",
 ]
 
-const CHAR_DELAY = 30
-const LINE_GAP = 80
+const CHAR_DELAY = 6
+const LINE_GAP = 40
 
 const BootSequence = ({ onComplete }: BootSequenceProps) => {
   const [displayedLines, setDisplayedLines] = useState<string[]>([])
@@ -68,7 +68,7 @@ const BootSequence = ({ onComplete }: BootSequenceProps) => {
     if (skippedRef.current || done) return
     if (currentLineIndex >= BOOT_LINES.length) {
       setDone(true)
-      setTimeout(finishBoot, 800)
+      setTimeout(finishBoot, 400)
       return
     }
 
@@ -183,8 +183,8 @@ const BootSequence = ({ onComplete }: BootSequenceProps) => {
           position: "absolute",
           bottom: ["12px", "20px"],
           right: ["12px", "20px"],
-          color: "#555",
-          fontSize: "11px",
+          color: "#888",
+          fontSize: "12px",
           fontFamily: "monospace",
         }}
       >

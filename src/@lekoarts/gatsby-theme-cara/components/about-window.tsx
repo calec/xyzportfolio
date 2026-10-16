@@ -32,25 +32,32 @@ const lines = [
   `  README.txt — About Cale Corwin`,
   `  ════════════════════════════════════════════════════`,
   ``,
-  `  Full-Stack Software Developer`,
+  `  Technical Product Manager`,
   `  Location   : United States`,
-  `  Status     : Available for hire`,
+  `  Status     : Open to Product Management roles`,
   ``,
   `  ────────────────────────────────────────────────────`,
   `  ABOUT`,
   `  ────────────────────────────────────────────────────`,
   ``,
-  `  Hi! I'm Cale — a full-stack developer with a passion`,
-  `  for building clean, performant web applications and`,
-  `  crafting intuitive user experiences.`,
+  `  Hi! I'm Cale — a product manager with a hands-on`,
+  `  engineering background. I've spent my career building`,
+  `  digital solutions and automating workflows.`,
   ``,
-  `  I enjoy working across the entire stack, from wiring`,
-  `  up REST and GraphQL APIs on the backend to polishing`,
-  `  pixel-perfect UIs on the frontend.`,
+  `  My project management experience and technical depth`,
+  `  let me take a product from whiteboard to launch:`,
+  `  framing the problem, aligning stakeholders, and`,
+  `  working shoulder-to-shoulder with engineering.`,
   ``,
   `  ────────────────────────────────────────────────────`,
   `  SKILLS`,
   `  ────────────────────────────────────────────────────`,
+  ``,
+  `  Product & Delivery`,
+  `    ► Roadmapping & prioritization`,
+  `    ► Agile / Scrum delivery`,
+  `    ► Jira, Azure DevOps, MS Project`,
+  `    ► AI-assisted development workflows`,
   ``,
   `  Languages & Runtimes`,
   `    ► JavaScript (ES6+)`,
@@ -71,11 +78,7 @@ const lines = [
   ``,
   `  DevOps & Tooling`,
   `    ► Git`,
-  `    ► SQL`,
   `    ► VSCode`,
-  `    ► Azure DevOps`,
-  `    ► Jira`,
-  `    ► MS Project`,
   ``,
   `  ────────────────────────────────────────────────────`,
   `  THIS PORTFOLIO`,
@@ -96,7 +99,7 @@ const AboutWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Abou
     <Window
       title="README.txt"
       icon="📄"
-      defaultPosition={{ x: 80, y: 60 }}
+      defaultPosition={{ x: 140, y: 40 }}
       defaultSize={{ width: 620, height: 480 }}
       isOpen={isOpen}
       onClose={onClose}
@@ -119,6 +122,7 @@ const AboutWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Abou
       <div
         sx={{
           mb: 3,
+          flexShrink: 0,
           overflowX: "auto",
           "&::-webkit-scrollbar": { display: "none" },
           msOverflowStyle: "none",
@@ -220,7 +224,8 @@ const AboutWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Abou
                     : isHeader
                     ? "0 0 8px rgba(85, 255, 170, 0.5)"
                     : "0 0 4px rgba(var(--retro-primary-rgb), 0.25)",
-                  whiteSpace: "pre",
+                  whiteSpace: "pre-wrap",
+                  minWidth: 0,
                   fontWeight: isHeader ? 700 : 400,
                   lineHeight: 1.75,
                 }}

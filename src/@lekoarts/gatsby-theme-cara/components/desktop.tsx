@@ -144,6 +144,11 @@ const Desktop = () => {
   const [screenFlicker, setScreenFlicker] = useState(false)
   const flickerTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
+  // Open the README on load so visitors land on the bio instead of an empty desktop
+  useEffect(() => {
+    if (!isMobile) dispatch({ type: "OPEN", id: "about" })
+  }, [])
+
   // Konami code listener — cleanup timer on unmount
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
@@ -581,6 +586,22 @@ const Desktop = () => {
               onOpen={handleIconOpen}
             />
           ))}
+        </div>
+      )}
+
+      {!isMobile && (
+        <div
+          sx={{
+            position: "absolute",
+            bottom: "52px",
+            left: "16px",
+            color: "rgba(var(--retro-primary-rgb), 0.55)",
+            fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
+            fontSize: "11px",
+            pointerEvents: "none",
+          }}
+        >
+          Double-click an icon to open it
         </div>
       )}
 

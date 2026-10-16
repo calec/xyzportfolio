@@ -297,7 +297,13 @@ const ContactWindow = ({ isOpen, onClose, onMinimize, zIndex, soundEnabled }: Co
               fontFamily: '"JetBrains Mono", "IBM Plex Mono", monospace',
             }}
           >
-            {">"} ERROR: {errorMsg || "Transmission failed. Try again."}
+            {">"} ERROR: {errorMsg || "Transmission failed."}{" "}
+            <a
+              href={`mailto:cale@cale.xyz?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`}
+              sx={{ color: "var(--retro-primary)" }}
+            >
+              Email cale@cale.xyz directly instead
+            </a>
           </div>
         )}
 

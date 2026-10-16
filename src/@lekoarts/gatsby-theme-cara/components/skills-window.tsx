@@ -21,14 +21,16 @@ const infoRows: Array<{ key: string; value: string } | { separator: true }> = [
   { separator: true },
   { key: "OS:", value: "C4L3 OS v2.0" },
   { key: "Host:", value: "cale.xyz" },
-  { key: "Shell:", value: "bash 5.1" },
+  { key: "Role:", value: "Technical Product Manager" },
   { key: "Uptime:", value: "5+ years experience" },
   { separator: true },
+  { key: "Product:", value: "Roadmaps, Agile delivery" },
+  { key: "PM Tools:", value: "Jira, Azure DevOps, MS Project" },
   { key: "Languages:", value: "JavaScript, TypeScript" },
   { key: "Frontend:", value: "React, Next.js, Gatsby" },
   { key: "Backend:", value: "Node.js, Express" },
   { key: "Data:", value: "SQL, MongoDB, GraphQL" },
-  { key: "Tools:", value: "Git, Jira, Azure DevOps" },
+  { key: "Dev Tools:", value: "Git, VSCode" },
   { key: "Deploy:", value: "Heroku, Netlify" },
 ]
 
