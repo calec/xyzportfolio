@@ -31,9 +31,9 @@ const projects: Project[] = [
     filename: "GrantsNotes.exe",
     description:
       "A collaborative note-taking app built with React, Material UI and a Slate rich-text editor, originally backed by Firebase auth and MongoDB. Revived as a self-contained demo that runs in the browser.",
-    modified: "2023-08-14",
+    modified: "2026-10-17",
     size: "2.4 MB",
-    tech: ["React", "Material-UI", "Firebase"],
+    tech: ["React", "Material-UI", "Slate", "localStorage"],
     demoUrl: "/grantsnotes/",
     sourceUrl: "https://github.com/calec/notes-app",
   },
