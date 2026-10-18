@@ -1,0 +1,2 @@
+# Single-page apps subhosted under static/ (deep links and refreshes)
+/hero-association/*  /hero-association/index.html  200

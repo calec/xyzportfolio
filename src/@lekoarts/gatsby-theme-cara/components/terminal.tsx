@@ -74,7 +74,7 @@ const COMMANDS: Record<string, { lines: string[]; color?: string; opensWindow?: 
       "════════════════════════════════════════",
       "",
       "📄 GrantsNotes.exe          [React + Material-UI]",
-      "📄 OPP_Workout.exe          [React + Express + SQL]",
+      "📄 HeroAssociation.exe      [Expo + React Native]",
       "",
       "[Window: C:\\Projects opened]",
     ],

@@ -38,16 +38,15 @@ const projects: Project[] = [
     sourceUrl: "https://github.com/calec/notes-app",
   },
   {
-    id: "opp-workout",
-    name: "OPP Workout Tool",
-    filename: "OPP_Workout.exe",
+    id: "hero-association",
+    name: "Hero Association",
+    filename: "HeroAssociation.exe",
     description:
-      "A fitness tracking application for logging workouts, tracking progress, and managing exercise routines. Currently in active development.",
-    modified: "2024-11-03",
-    size: "1.8 MB",
-    tech: ["React", "Node.js", "MongoDB"],
-    demoUrl: "https://github.com/calec",
-    status: "In Development",
+      "A cross-platform fitness tracker for the 100 push-ups, 100 sit-ups, 100 squats and 10 km daily challenge, with S-Class and C-Class streaks and live leaderboards. Built with Expo and React Native Web on Supabase; the demo runs entirely in the browser with a seeded roster of rival heroes.",
+    modified: "2026-10-18",
+    size: "6.2 MB",
+    tech: ["Expo", "React Native", "TypeScript", "Supabase"],
+    demoUrl: "/hero-association/",
   },
 ]
 
