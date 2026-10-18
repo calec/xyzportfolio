@@ -30,12 +30,12 @@ const projects: Project[] = [
     name: "GrantsNotes",
     filename: "GrantsNotes.exe",
     description:
-      "A note-taking and organization app built with React and Material UI. Deployed on Firebase with real-time sync and user authentication.",
+      "A collaborative note-taking app built with React, Material UI and a Slate rich-text editor, originally backed by Firebase auth and MongoDB. Revived as a self-contained demo that runs in the browser.",
     modified: "2023-08-14",
     size: "2.4 MB",
     tech: ["React", "Material-UI", "Firebase"],
-    demoUrl: "https://grants-notes.herokuapp.com",
-    sourceUrl: "https://github.com/calec",
+    demoUrl: "/grantsnotes/",
+    sourceUrl: "https://github.com/calec/notes-app",
   },
   {
     id: "opp-workout",
